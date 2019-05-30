@@ -1,6 +1,5 @@
 // import $ from 'jquery';
 import './css/base.scss';
-import fetch from 'cross-fetch';
 
 let userData;
 let roomData;
