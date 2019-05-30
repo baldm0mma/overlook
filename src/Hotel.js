@@ -36,6 +36,16 @@ class Hotel {
     }
   }
 
+  createNewCustomer(name) {
+    let newbieCustomer = new Customer(name, this.users.length + 1);
+    this.users.push(newbieCustomer);
+    this.currentCustomer = newbieCustomer;
+  }
+
+  captureReturnCustomer(name, id) {
+    this.currentCustomer = new Customer(name, id);
+  }
+
   generateDateToday() {
     let today = new Date();
     let dd = today.getDate();
@@ -51,13 +61,13 @@ class Hotel {
   }
 
   generateAvailableRooms() {
-    let roomNumbers = this.bookings.reduce((acc, currentBooking) => {
+    let roomNumbers = this.bookings.reduce((bookedRoomNum, currentBooking) => {
       if (currentBooking.date !== this.today) {
-        if (!acc.includes(currentBooking.roomNumber)) {
-          acc.push(currentBooking.roomNumber);
+        if (!bookedRoomNum.includes(currentBooking.roomNumber)) {
+          bookedRoomNum.push(currentBooking.roomNumber);
         }
       }
-      return acc;
+      return bookedRoomNum;
     }, []);
     return roomNumbers.reduce((allAvailableRooms, roomNum) => {
       this.rooms.forEach(room => {
@@ -70,11 +80,11 @@ class Hotel {
   }
 
   calculateDebtsToday() {
-    let roomServiceDebt = this.roomServices.reduce((acc, curr) => {
-      if (curr.date === this.today) {
-        acc += curr.totalCost;
+    let roomServiceDebt = this.roomServices.reduce((roomsThatOwe, service) => {
+      if (service.date === this.today) {
+        roomsThatOwe += service.totalCost;
       }
-      return acc;
+      return roomsThatOwe;
     }, 0);
     let roomsWithDebt = this.bookings.reduce((totalBookings, currBooking) => {
       if (currBooking.date === this.today) {

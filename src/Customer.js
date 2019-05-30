@@ -1,8 +1,23 @@
 class Customer {
-  constructor(name, id, custData) {
-    this.data = custData || null;
+  constructor(name, id, allCustomersLength) {
     this.name = name;
-    this.id = id || custData.length + 1;
+    this.id = id || allCustomersLength;
+  }
+
+  bookOrUnbookRoom() {
+
+  }
+
+  purchaseRoomService() {
+
+  }
+
+  upgradeRoom() {
+    
+  }
+
+  calculateTotalBill() {
+    
   }
 
 }
