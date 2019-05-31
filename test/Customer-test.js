@@ -3,7 +3,7 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import Customer from '../src/Customer';
-import customerTestData from '../src/testData/TestData';
+// import  from '../src/testData/TestData';
 // import domUpdates from "../src/domUpdates";
 // chai.spy.on(domUpdates, 'updateScore', () => true);
 // chai.spy.on(domUpdates, 'turnPrompt', () => true);
@@ -13,7 +13,7 @@ describe('Customer', function() {
   let customer;
 
   beforeEach(function() {
-    customer = new Customer('Jev', customerTestData);
+    customer = new Customer('Jev', );
 
   });
 

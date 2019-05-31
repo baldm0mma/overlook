@@ -1,4 +1,4 @@
-const customerTestData = [
+const users = [
   {
     id: 1,
     name: "Autumn Toy"
@@ -38,10 +38,50 @@ const customerTestData = [
   {
     id: 10,
     name: "Kiel O'Reilly"
+  },
+  {
+    id: 11,
+    name: "Jake Jenkins"
+  },
+  {
+    id: 12,
+    name: "Maynard Langworth"
+  },
+  {
+    id: 13,
+    name: "Lorenz Dare"
+  },
+  {
+    id: 14,
+    name: "Lura Kshlerin"
+  },
+  {
+    id: 15,
+    name: "Sigurd Hoppe"
+  },
+  {
+    id: 16,
+    name: "Julie Reilly"
+  },
+  {
+    id: 17,
+    name: "Kianna Walter"
+  },
+  {
+    id: 18,
+    name: "Meggie Rice"
+  },
+  {
+    id: 19,
+    name: "Muriel McGlynn"
+  },
+  {
+    id: 20,
+    name: "Kelley VonRueden"
   }
 ];
 
-const roomsTestData = [
+const rooms = [
   {
     number: 1,
     roomType: "residential suite",
@@ -121,10 +161,90 @@ const roomsTestData = [
     bedSize: "king",
     numBeds: 1,
     costPerNight: 275.32
+  },
+  {
+    number: 11,
+    roomType: "single room",
+    bidet: true,
+    bedSize: "queen",
+    numBeds: 2,
+    costPerNight: 493.85
+  },
+  {
+    number: 12,
+    roomType: "single room",
+    bidet: false,
+    bedSize: "twin",
+    numBeds: 1,
+    costPerNight: 176.99
+  },
+  {
+    number: 13,
+    roomType: "residential suite",
+    bidet: true,
+    bedSize: "king",
+    numBeds: 1,
+    costPerNight: 417.08
+  },
+  {
+    number: 14,
+    roomType: "single room",
+    bidet: false,
+    bedSize: "king",
+    numBeds: 1,
+    costPerNight: 217.17
+  },
+  {
+    number: 15,
+    roomType: "residential suite",
+    bidet: false,
+    bedSize: "full",
+    numBeds: 1,
+    costPerNight: 159.65
+  },
+  {
+    number: 16,
+    roomType: "junior suite",
+    bidet: false,
+    bedSize: "king",
+    numBeds: 2,
+    costPerNight: 239.54
+  },
+  {
+    number: 17,
+    roomType: "junior suite",
+    bidet: false,
+    bedSize: "queen",
+    numBeds: 1,
+    costPerNight: 259.06
+  },
+  {
+    number: 18,
+    roomType: "suite",
+    bidet: false,
+    bedSize: "queen",
+    numBeds: 1,
+    costPerNight: 444.27
+  },
+  {
+    number: 19,
+    roomType: "junior suite",
+    bidet: true,
+    bedSize: "queen",
+    numBeds: 1,
+    costPerNight: 229.67
+  },
+  {
+    number: 20,
+    roomType: "suite",
+    bidet: false,
+    bedSize: "twin",
+    numBeds: 1,
+    costPerNight: 258.1
   }
 ];
 
-const bookingsTestData = [
+const bookings = [
   {
     userID: 78,
     date: "21/08/2019",
@@ -174,10 +294,60 @@ const bookingsTestData = [
     userID: 74,
     date: "18/07/2019",
     roomNumber: 123
+  },
+  {
+    userID: 88,
+    date: "17/11/2019",
+    roomNumber: 99
+  },
+  {
+    userID: 45,
+    date: "19/08/2019",
+    roomNumber: 166
+  },
+  {
+    userID: 92,
+    date: "22/09/2019",
+    roomNumber: 21
+  },
+  {
+    userID: 69,
+    date: "03/11/2019",
+    roomNumber: 28
+  },
+  {
+    userID: 76,
+    date: "14/06/2019",
+    roomNumber: 124
+  },
+  {
+    userID: 44,
+    date: "16/07/2019",
+    roomNumber: 169
+  },
+  {
+    userID: 7,
+    date: "29/09/2019",
+    roomNumber: 50
+  },
+  {
+    userID: 48,
+    date: "06/11/2019",
+    roomNumber: 150
+  },
+  {
+    userID: 67,
+    date: "03/10/2019",
+    roomNumber: 3
+  },
+  {
+    userID: 46,
+    date: "04/08/2019",
+    roomNumber: 180
   }
 ];
 
-const roomServicesTestData = [
+const roomServices = [
   {
     userID: 34,
     date: "21/10/2019",
@@ -237,7 +407,67 @@ const roomServicesTestData = [
     date: "17/12/2019",
     food: "Ergonomic Fresh Sandwich",
     totalCost: 19.16
+  },
+  {
+    userID: 68,
+    date: "27/10/2019",
+    food: "Intelligent Frozen Sandwich",
+    totalCost: 21.6
+  },
+  {
+    userID: 30,
+    date: "29/01/2020",
+    food: "Intelligent Metal Sandwich",
+    totalCost: 23.02
+  },
+  {
+    userID: 66,
+    date: "27/01/2020",
+    food: "Handmade Frozen Sandwich",
+    totalCost: 22.69
+  },
+  {
+    userID: 36,
+    date: "02/11/2019",
+    food: "Handmade Steel Sandwich",
+    totalCost: 11.16
+  },
+  {
+    userID: 72,
+    date: "10/07/2019",
+    food: "Unbranded Plastic Sandwich",
+    totalCost: 9.6
+  },
+  {
+    userID: 91,
+    date: "04/12/2019",
+    food: "Unbranded Wooden Sandwich",
+    totalCost: 8.7
+  },
+  {
+    userID: 74,
+    date: "18/07/2019",
+    food: "Handmade Cotton Sandwich",
+    totalCost: 17.39
+  },
+  {
+    userID: 36,
+    date: "02/11/2019",
+    food: "Refined Granite Sandwich",
+    totalCost: 8.19
+  },
+  {
+    userID: 13,
+    date: "22/06/2019",
+    food: "Incredible Fresh Sandwich",
+    totalCost: 8.2
+  },
+  {
+    userID: 39,
+    date: "23/10/2019",
+    food: "Rustic Frozen Sandwich",
+    totalCost: 17.26
   }
 ];
 
-export default { customerTestData, roomsTestData, bookingsTestData, roomServicesTestData };
+export { users, rooms, bookings, roomServices };

@@ -50,7 +50,7 @@ class Hotel {
     return roomServiceDebt + roomCharges;
   }
 
-  showRoomsOccupiedToday() {
+  showPercentageOfRoomsOccupiedToday() {
     let todaysBookings = this.bookings.reduce((roomNums, booking) => {
       if (booking.date === this.today) {
         roomNums.push(booking);
@@ -64,7 +64,7 @@ class Hotel {
         }
       });
       return freeRooms;
-    }, []);
+    }, []).length / this.rooms.length * 100;
   }
 
 }

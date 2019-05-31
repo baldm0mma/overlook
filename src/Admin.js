@@ -1,34 +1,20 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
-import Services from './Services';
+import AllServices from './AllServices';
 import Bookings from './Bookings';
 
 class Admin {
-  constructor () {
-    this.allData = {
-      users: this.fetchData('users'),
-      rooms: this.fetchData('rooms'),
-      bookings: this.fetchData('bookings'),
-      roomServices: this.fetchData('roomServices')
-    }
+  constructor (combinedData) {
+    this.allData = combinedData;
+    this.users = this.allData.users;
+    this.rooms = this.allData.rooms;
+    this.bookings = this.allData.bookings;
+    this.roomServices = this.allData.roomServices;
     this.today = this.generateDateToday();
     this.hotel;
     this.currentCustomer;
-    this.currentHotelDisplay;
-    this.currentServicesDisplay;
-    this.currentBookingsDisplay;
-  }
-
-  fetchData(type) {
-    let url = `https://fe-apps.herokuapp.com/api/v1/overlook/1903/${type}/${type}`;
-    if (type === 'roomServices') {
-      url = `https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/${type}`
-    }
-    return fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        this[type] = data[type];
-      });
+    this.customerBooking;
+    this.customerService;
   }
 
   generateDateToday() {
@@ -45,7 +31,7 @@ class Admin {
     return (mm + '/' + dd + '/' + yyyy);
   }
 
-  initiateHotelDisplay() {
+  initiateHotelBenchmarks() {
     this.hotel = new Hotel(this.allData, this.today);
   }
 
@@ -53,10 +39,12 @@ class Admin {
     let strNum;
     parseInt(searchTerm) ? strNum = parseInt(searchTerm) : strNum = searchTerm;
     if (typeof strNum === 'string') {
-      let string = this.allData.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
+      let string = this.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
+      string ? this.currentCustomer = new Customer(string.name, string.id) : null;
       return string ? string : null;
     } else if (typeof strNum === 'number') {
-      let number = this.allData.users.find(cust => cust.id === strNum);
+      let number = this.users.find(cust => cust.id === strNum);
+      this.currentCustomer = new Customer(number.name, number.id);
       return number ? number : null;
     } else {
       return null;
@@ -64,10 +52,10 @@ class Admin {
   }
 
   createNewCustomer(name) {
-    let newbieCustomer = new Customer(name, this.allData.users.length + 1);
-    this.allData.users.push(newbieCustomer);
+    let newbieCustomer = new Customer(name, this.users.length + 1);
+    this.users.push(newbieCustomer);
     this.currentCustomer = newbieCustomer;
-    this.currentHotelDisplay = new Hotel(this);
+    this.hotel = new Hotel(this.allData);
   }
 
   captureReturnCustomer(name, id) {
@@ -80,25 +68,25 @@ class Admin {
       date,
       roomNumber
     };
-    this.allData.bookings.push(newBooking);
-    this.currentHotelDisplay = new Hotel(this);
+    this.bookings.push(newBooking);
+    this.hotel = new Hotel(this.allData);
   }
 
   cancelBooking() {
-    this.bookings
-    this.currentHotelDisplay = new Hotel(this);
+    // this.bookings
+    this.hotel = new Hotel(this.allData);
   }
 
   purchaseRoomService() {
 
-    this.currentHotelDisplay = new Hotel(this);
-    this.currentServicesDisplay = new Services(this, this.currentCustomer, this.today);
+    this.hotel = new Hotel(this.allData);
+    // this.roomServices = new AllServices(this.allData, this.customer, this.today);
   }
 
   upgradeRoom() {
     
-    this.currentHotelDisplay = new Hotel(this);
-    this.currentBookingsDisplay = new Bookings(this);
+    this.hotel = new Hotel(this.allData);
+    this.bookings = new Bookings(this.allData);
   }
 
 }
