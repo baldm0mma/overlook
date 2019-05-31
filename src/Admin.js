@@ -1,22 +1,19 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
-import Services from './Services';
+import AllServices from './AllServices';
 import Bookings from './Bookings';
 
 class Admin {
   constructor () {
-    this.allData = {
-      users: this.fetchData('users'),
-      rooms: this.fetchData('rooms'),
-      bookings: this.fetchData('bookings'),
-      roomServices: this.fetchData('roomServices')
-    }
+    this.users = this.fetchData('users');
+    this.rooms = this.fetchData('rooms');
+    this.bookings = this.fetchData('bookings');
+    this.roomServices = this.fetchData('roomServices');
     this.today = this.generateDateToday();
     this.hotel;
     this.currentCustomer;
-    this.currentHotelDisplay;
-    this.currentServicesDisplay;
-    this.currentBookingsDisplay;
+    this.currentServices;
+    this.currentBookings;
   }
 
   fetchData(type) {
@@ -46,17 +43,17 @@ class Admin {
   }
 
   initiateHotelDisplay() {
-    this.hotel = new Hotel(this.allData, this.today);
+    this.hotel = new Hotel(this, this.today);
   }
 
   searchForSpecificUser(searchTerm) {
     let strNum;
     parseInt(searchTerm) ? strNum = parseInt(searchTerm) : strNum = searchTerm;
     if (typeof strNum === 'string') {
-      let string = this.allData.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
+      let string = this.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
       return string ? string : null;
     } else if (typeof strNum === 'number') {
-      let number = this.allData.users.find(cust => cust.id === strNum);
+      let number = this.users.find(cust => cust.id === strNum);
       return number ? number : null;
     } else {
       return null;
@@ -64,41 +61,41 @@ class Admin {
   }
 
   createNewCustomer(name) {
-    let newbieCustomer = new Customer(name, this.allData.users.length + 1);
-    this.allData.users.push(newbieCustomer);
-    this.currentCustomer = newbieCustomer;
-    this.currentHotelDisplay = new Hotel(this);
+    let newbieCustomer = new Customer(name, this.users.length + 1);
+    this.users.push(newbieCustomer);
+    this.customer = newbieCustomer;
+    this.hotel = new Hotel(this);
   }
 
   captureReturnCustomer(name, id) {
-    this.currentCustomer = new Customer(name, id);
+    this.customer = new Customer(name, id);
   }
 
   bookARoom(date, roomNumber) {
     const newBooking = {
-      userID: this.currentCustomer.id,
+      userID: this.customer.id,
       date,
       roomNumber
     };
-    this.allData.bookings.push(newBooking);
-    this.currentHotelDisplay = new Hotel(this);
+    this.bookings.push(newBooking);
+    this.hotel = new Hotel(this);
   }
 
   cancelBooking() {
-    this.bookings
-    this.currentHotelDisplay = new Hotel(this);
+    // this.bookings
+    this.hotel = new Hotel(this);
   }
 
   purchaseRoomService() {
 
-    this.currentHotelDisplay = new Hotel(this);
-    this.currentServicesDisplay = new Services(this, this.currentCustomer, this.today);
+    this.hotel = new Hotel(this);
+    this.services = new AllServices(this, this.customer, this.today);
   }
 
   upgradeRoom() {
     
-    this.currentHotelDisplay = new Hotel(this);
-    this.currentBookingsDisplay = new Bookings(this);
+    this.hotel = new Hotel(this);
+    this.bookings = new Bookings(this);
   }
 
 }
