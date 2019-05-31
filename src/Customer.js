@@ -4,20 +4,8 @@ class Customer {
     this.id = id || allCustomersLength;
   }
 
-  bookOrUnbookRoom() {
-
-  }
-
-  purchaseRoomService() {
-
-  }
-
-  upgradeRoom() {
-    
-  }
-
   calculateTotalBill() {
-    
+  
   }
 
 }

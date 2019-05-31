@@ -1,7 +1,5 @@
 // import $ from 'jquery';
 import './css/base.scss';
-import Hotel from './Hotel';
+import Admin from './Admin';
 
-let hotel = new Hotel();
-
-document.ready
+let admin = new Admin();
