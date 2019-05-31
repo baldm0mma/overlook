@@ -56,4 +56,11 @@ describe('Admin', function() {
     expect(admin.currentCustomer.name).to.eql('Autumn Toy');
   });
 
+  it('should have a method for a customer to book a room', function() {
+    expect(admin.bookings).to.have.length(20);
+    admin.createNewCustomer('Jevbert');
+    admin.bookARoom('11/03/19', 67);
+    expect(admin.bookings).to.have.length(21);
+  });
+
 });

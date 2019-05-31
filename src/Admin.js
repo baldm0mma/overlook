@@ -13,8 +13,8 @@ class Admin {
     this.today = this.generateDateToday();
     this.hotel;
     this.currentCustomer;
-    this.currentServices;
-    this.currentBookings;
+    this.customerBooking;
+    this.customerService;
   }
 
   generateDateToday() {
@@ -40,10 +40,12 @@ class Admin {
     parseInt(searchTerm) ? strNum = parseInt(searchTerm) : strNum = searchTerm;
     if (typeof strNum === 'string') {
       let string = this.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
-      return string ? this.captureReturnCustomer(string.name, string.id) : null;
+      string ? this.currentCustomer = new Customer(string.name, string.id) : null;
+      return string ? string : null;
     } else if (typeof strNum === 'number') {
       let number = this.users.find(cust => cust.id === strNum);
-      return number ? this.captureReturnCustomer(number.name, number.id) : null;
+      this.currentCustomer = new Customer(number.name, number.id);
+      return number ? number : null;
     } else {
       return null;
     }
@@ -66,7 +68,7 @@ class Admin {
       date,
       roomNumber
     };
-    this.currentBookings.push(newBooking);
+    this.bookings.push(newBooking);
     this.hotel = new Hotel(this.allData);
   }
 
@@ -78,13 +80,13 @@ class Admin {
   purchaseRoomService() {
 
     this.hotel = new Hotel(this.allData);
-    this.currentServices = new AllServices(this.allData, this.customer, this.today);
+    // this.roomServices = new AllServices(this.allData, this.customer, this.today);
   }
 
   upgradeRoom() {
     
     this.hotel = new Hotel(this.allData);
-    this.currentBookings = new Bookings(this.allData);
+    this.bookings = new Bookings(this.allData);
   }
 
 }
