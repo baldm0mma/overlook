@@ -1,6 +1,7 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 import './css/base.scss';
 import Admin from './Admin';
+import domUpdates from './DomUpdates';
 
 let users = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/users/users').then(function(response) {
   return response.json()
@@ -32,7 +33,27 @@ Promise.all([users, roomServices, bookings, rooms])
 
 let admin;
 
-setTimeout( () => {
+setTimeout(console.log(combinedData), 2000);
+
+$(document).ready(function() {
+  
+  setTimeout( () => {
+    admin = new Admin(combinedData);
+    // console.log(admin);
+  }, 1000);
+
   admin = new Admin(combinedData);
-  console.log(admin);
-}, 1000);
+
+  $('ul.tabs li').click(function() {
+    var tab_id = $(this).attr('data-tab');
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+    $(this).addClass('current');
+    $("#" + tab_id).addClass('current');
+  });
+
+  setTimeout( () => {
+    domUpdates.populateAllTabs(admin);
+  }, 1500);
+
+});

@@ -1,22 +1,24 @@
 class Hotel {
   constructor(data, today) {
-    this.users = data.users;
-    this.rooms = data.rooms;
-    this.bookings = data.bookings;
-    this.roomServices = data.roomServices;
+    this.users = data.users.users;
+    this.rooms = data.rooms.rooms;
+    this.bookings = data.bookings.bookings;
+    this.roomServices = data.roomServices.roomServices;
     this.today = today;
+    // console.log('bookings', this.users);
+  }
+
+  generateAvailableRoomNumbers() {
+    return this.bookings.reduce((nonBookedRoomNums, currentBooking) => {
+      if (currentBooking.date !== this.today) {
+        nonBookedRoomNums.push(currentBooking.roomNumber);
+      }
+      return nonBookedRoomNums;
+    }, []);
   }
 
   generateAvailableRooms() {
-    let roomNumbers = this.bookings.reduce((bookedRoomNum, currentBooking) => {
-      if (currentBooking.date !== this.today) {
-        if (!bookedRoomNum.includes(currentBooking.roomNumber)) {
-          bookedRoomNum.push(currentBooking.roomNumber);
-        }
-      }
-      return bookedRoomNum;
-    }, []);
-    return roomNumbers.reduce((allAvailableRooms, roomNum) => {
+    return this.generateAvailableRoomNumbers().reduce((allAvailableRooms, roomNum) => {
       this.rooms.forEach(room => {
         if (roomNum === room.number) {
           allAvailableRooms.push(room);

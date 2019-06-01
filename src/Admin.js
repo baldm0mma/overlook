@@ -2,19 +2,21 @@ import Customer from './Customer';
 import Hotel from './Hotel';
 import AllServices from './AllServices';
 import Bookings from './Bookings';
+// import DomUpdates from './DomUpdates';
 
 class Admin {
   constructor (combinedData) {
     this.allData = combinedData;
-    this.users = this.allData.users;
-    this.rooms = this.allData.rooms;
-    this.bookings = this.allData.bookings;
-    this.roomServices = this.allData.roomServices;
+    this.users = this.allData.users.users;
+    this.rooms = this.allData.rooms.rooms;
+    this.bookings = this.allData.bookings.bookings;
+    this.roomServices = this.allData.roomServices.roomServices;
     this.today = this.generateDateToday();
-    this.hotel;
+    this.hotel = this.initiateHotelBenchmarks();
     this.currentCustomer;
     this.customerBooking;
     this.customerService;
+    // console.log('users', this.users);
   }
 
   generateDateToday() {
@@ -32,7 +34,7 @@ class Admin {
   }
 
   initiateHotelBenchmarks() {
-    this.hotel = new Hotel(this.allData, this.today);
+    return new Hotel(this.allData, this.today);
   }
 
   searchForSpecificUser(searchTerm) {

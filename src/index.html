@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Hotel, Motel Holiday Inn...</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
 
+    <header>
+      <h1>Welcome to Hotel Tracker, we're glad you're back with us!</h1>
+      <h3 class="current-customer-name"></h3>
+    </header>
+    <div class="container">
+
+      <ul class="tabs">
+        <li class="tab-link current" data-tab="main">Main</li>
+        <li class="tab-link" data-tab="customer">Customer</li>
+        <li class="tab-link" data-tab="rooms">Rooms</li>
+        <li class="tab-link" data-tab="orders">Orders</li>
+      </ul>
+    
+      <div id="main" class="tab-content current">
+        <h4 class="main-title">Total Rooms Available for today's date</h4>
+        <p class="main-content total-rooms">Calculating...</p>
+        <h4 class="main-title">Total earned if all debt's are paid for today's date</h4>
+        <p class="main-content total-earned">Calculating...</p>
+        <h4 class="main-title">Percentage of rooms occupied for today's date</h4>
+        <p class="main-content percent-occupied">Calculating...</p>
+      </div>
+
+      <div id="customer" class="tab-content">
+        <h4>You can search for a exsisting customer below.</h4>
+        <form>
+          <label for="search-name">Search database with customer's full name:</label>
+          <input type="text" id="search-name" value="Enter full name here">
+          <button type="button">Submit</button>
+        </form> 
+        <h4>Or, here you can create a new customer. Please enter a first and last name, and they will be entered into our database.</h4>
+        <form>
+          <label for="enter-new-name">Create new customer with full name:</label>
+          <input type="text" id="enter-new-name" value="Enter full name here">
+          <button type="button">Submit</button>
+        </form> 
+      </div>
+
+      <div id="rooms" class="tab-content">
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      </div>
+
+      <div id="orders" class="tab-content">
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </div>
+    
+    </div>
   </body>
 </html>
