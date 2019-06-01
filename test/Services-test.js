@@ -2,33 +2,33 @@ import chai from 'chai';
 const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
-import AllServices from '../src/AllServices';
+import Services from '../src/Services';
 import customerTestData from '../src/testData/TestData';
 // import domUpdates from "../src/domUpdates";
 // chai.spy.on(domUpdates, 'updateScore', () => true);
 // chai.spy.on(domUpdates, 'turnPrompt', () => true);
 
-describe('AllServices', function() {
+describe('Services', function() {
 
-  let allServices;
+  let services;
 
   beforeEach(function() {
-    allServices = new AllServices();
+    services = new Services();
 
   });
 
   it('should be a function', function() {
-    expect(AllServices).to.be.a('function');
+    expect(Services).to.be.a('function');
   });
 
-  it('should be an instance of AllServices', function() {
-    expect(allServices).to.be.an.instanceof(AllServices);
+  it('should be an instance of Services', function() {
+    expect(services).to.be.an.instanceof(Services);
   });
 
   it('should have a method that returns a user object when given a search parameter of a name, or ID, and, should return "null" if the user does not exsist', function() {
-    expect(allServices.searchForSpecificUser('Autumn')).to.be.an('object');
-    expect(allServices.searchForSpecificUser('1')).to.be.an('object');
-    expect(allServices.searchForSpecificUser('Jev')).to.equal(null);
+    expect(services.searchForSpecificUser('Autumn')).to.be.an('object');
+    expect(services.searchForSpecificUser('1')).to.be.an('object');
+    expect(services.searchForSpecificUser('Jev')).to.equal(null);
   });
 
 });

@@ -3,17 +3,14 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import Hotel from '../src/Hotel';
-import customerTestData from '../src/testData/TestData';
-// import domUpdates from "../src/domUpdates";
-// chai.spy.on(domUpdates, 'updateScore', () => true);
-// chai.spy.on(domUpdates, 'turnPrompt', () => true);
+import { users, rooms, bookings, roomServices } from '../src/testData/TestData';
 
 describe('Hotel', function() {
 
   let hotel;
 
   beforeEach(function() {
-    hotel = new Hotel(customerTestData);
+    hotel = new Hotel({ users, rooms, bookings, roomServices }, "05/10/2019");
 
   });
 
@@ -25,10 +22,36 @@ describe('Hotel', function() {
     expect(hotel).to.be.an.instanceof(Hotel);
   });
 
-  it('should have a method that returns a user object when given a search parameter of a name, or ID, and, should return "null" if the user does not exsist', function() {
-    expect(hotel.searchForSpecificUser('Autumn')).to.be.an('object');
-    expect(hotel.searchForSpecificUser('1')).to.be.an('object');
-    expect(hotel.searchForSpecificUser('Jev')).to.equal(null);
+  it('should have a method that returns and array of all the bookings for a date', function() {
+    expect(hotel.bookingsByDate(hotel.today).length).to.eql(1);
+  });
+
+  it('should have a method that generates an array of available room numbers for a date', function() {
+    expect(hotel.generateAvailableRoomNumbersByDate(hotel.today).length).to.equal(19);
+  });
+
+  it('shoudl have a method that generates an array of booked rooms for a date', function() {
+    expect(hotel.generateBookedRoomNumbersByDate(hotel.today).length).to.equal(1);
+  });
+
+  it('should have a method that generates an array of room objects, either that are available or that are booked', function() {
+    expect(hotel.generateFullRoomInformation("available", hotel.today).length).to.equal(3);
+  });
+
+  it('Should have a method that calculates all of the room service charges for a date', function() {
+    expect(hotel.calculateRoomServiceDebtsByDate("17/11/2019")).to.equal(24.24);
+  });
+
+  it('Should have a method that calculates all of the room rental charges by date', function() {
+    expect(hotel.calculateRoomRentalsByDate("17/11/2019")).to.equal(258.1);
+  });
+
+  it('Should have a method that calculates all debts by date', function() {
+    expect(hotel.calculateAllDebtsToday("17/11/2019")).to.equal(282.34000000000003);
+  });
+  
+  it('Should have a method that calculates the percentage of rooms occupied by date', function() {
+    expect(hotel.showPercentageOfRoomsOccupiedByDate("17/11/2019")).to.equal(5);
   });
 
 });
