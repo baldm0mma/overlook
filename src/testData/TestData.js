@@ -251,7 +251,7 @@ const rooms = {
 const bookings = {
   bookings: [
     {
-      userID: 78,
+      userID: 1,
       date: "21/08/2019",
       roomNumber: 143
     },

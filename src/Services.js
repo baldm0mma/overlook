@@ -1,7 +1,6 @@
-class AllServices {
+class Services {
   constructor(data, customer, today) {
     this.users = data.users;
-    this.rooms = data.rooms;
     this.roomServices = data.roomServices;
     this.currentCustomer = customer;
     this.today = today;
@@ -17,4 +16,4 @@ class AllServices {
 
 }
 
-export default AllServices;
+export default Services;

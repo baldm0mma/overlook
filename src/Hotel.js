@@ -8,40 +8,55 @@ class Hotel {
     // console.log('bookings', this.users);
   }
 
-  generateAvailableRoomNumbers() {
-    return this.bookings.reduce((nonBookedRoomNums, currentBooking) => {
-      if (currentBooking.date !== this.today) {
-        nonBookedRoomNums.push(currentBooking.roomNumber);
+  bookingsForToday() {
+    return this.bookings.reduce((bookedRooms, booking) => {
+      if (booking.date === this.today) {
+        bookedRooms.push(booking);
       }
-      return nonBookedRoomNums;
+      return bookedRooms;
     }, []);
   }
 
-  generateAvailableRooms() {
-    return this.generateAvailableRoomNumbers().reduce((allAvailableRooms, roomNum) => {
+  generateAvailableRoomNumbersToday() {
+    return this.bookings.reduce((availableRoomNums, currentBooking) => {
+      if (currentBooking.date !== this.today) {
+        availableRoomNums.push(currentBooking.roomNumber);
+      }
+      return availableRoomNums;
+    }, []);
+  }
+
+  generateBookedRoomNumbersToday() {
+    return this.bookings.reduce((bookedRoomNums, currBooking) => {
+      if (currBooking.date === this.today) {
+        bookedRoomNums.push(currBooking.roomNumber);
+      }
+      return bookedRoomNums;
+    }, []);
+  }
+
+  generateFullRoomInformation(roomList) {
+    return roomList.reduce((finalRoomList, roomNum) => {
       this.rooms.forEach(room => {
         if (roomNum === room.number) {
-          allAvailableRooms.push(room);
+          finalRoomList.push(room);
         }
       });
-      return allAvailableRooms;
+      return finalRoomList;
     }, []);
   }
 
-  calculateDebtsToday() {
-    let roomServiceDebt = this.roomServices.reduce((roomsThatOwe, service) => {
+  calculateRoomServiceDebtsToday() {
+    return this.roomServices.reduce((totalOwed, service) => {
       if (service.date === this.today) {
-        roomsThatOwe += service.totalCost;
+        totalOwed += service.totalCost;
       }
-      return roomsThatOwe;
+      return totalOwed;
     }, 0);
-    let roomsWithDebt = this.bookings.reduce((totalBookings, currBooking) => {
-      if (currBooking.date === this.today) {
-        totalBookings.push(currBooking.roomNumber);
-      }
-      return totalBookings;
-    }, []);
-    let roomCharges = roomsWithDebt.reduce((totalRoomCharges, roomNum) => {
+  }
+
+  calculateRoomRentalsToday() {
+    return this.generateBookedRoomNumbersToday().reduce((totalRoomCharges, roomNum) => {
       this.rooms.forEach(room => {
         if (roomNum === room.number) {
           totalRoomCharges += room.costPerNight;
@@ -49,17 +64,14 @@ class Hotel {
       });
       return totalRoomCharges;
     }, 0);
-    return roomServiceDebt + roomCharges;
+  }
+
+  calculateAllDebtsToday() {
+    return this.calculateRoomServiceDebtsToday() + this.calculateRoomRentalsToday();
   }
 
   showPercentageOfRoomsOccupiedToday() {
-    let todaysBookings = this.bookings.reduce((roomNums, booking) => {
-      if (booking.date === this.today) {
-        roomNums.push(booking);
-      }
-      return roomNums;
-    }, []);
-    return todaysBookings.reduce((freeRooms, booking) => {
+    return this.bookingsForToday().reduce((freeRooms, booking) => {
       this.rooms.forEach(room => {
         if (booking.roomNumber === room.number) {
           freeRooms.push(room);

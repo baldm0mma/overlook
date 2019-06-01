@@ -74,17 +74,20 @@ class Admin {
     this.hotel = new Hotel(this.allData);
   }
 
-  // cancelBooking() {
-  //   this.bookings.findIndex(booking => {
-  //     if (this.currentCustomerBooking.)
-  //   })
-  //   this.hotel = new Hotel(this.allData);
-  // }
+  cancelBooking(date) {
+    let index = this.bookings.findIndex(booking => {
+      if (this.currentCustomerBooking.userID === this.currentCustomer.id && this.currentCustomerBooking.date === date) {
+        return booking;
+      }
+    });
+    this.bookings.splice(index, 1);
+    this.currentCustomerBooking = null;
+    this.hotel = new Hotel(this.allData);
+  }
 
   purchaseRoomService() {
-
+    this.currentCustomer;
     this.hotel = new Hotel(this.allData);
-    // this.roomServices = new AllServices(this.allData, this.customer, this.today);
   }
 
   upgradeRoom() {
