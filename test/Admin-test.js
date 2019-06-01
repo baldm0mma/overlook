@@ -48,13 +48,6 @@ describe('Admin', function() {
     expect(admin.users.length).to.eql(21);
   });
 
-  it('should have a method that returns a current customer after they are searched for, assuming they exsist', function() {
-    expect(admin.currentCustomer).to.be.an('undefined');
-    admin.captureReturnCustomer('Autumn Toy', 1);
-    expect(admin.currentCustomer).to.be.an.instanceof(Customer);
-    expect(admin.currentCustomer.name).to.eql('Autumn Toy');
-  });
-
   it('should have a method for a customer to book and unbook a room', function() {
     expect(admin.bookings).to.have.length(20);
     admin.createNewCustomer('Jevbert');

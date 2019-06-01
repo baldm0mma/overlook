@@ -57,11 +57,9 @@ class Admin {
     let newbieCustomer = new Customer(name, this.users.length + 1);
     this.users.push(newbieCustomer);
     this.currentCustomer = newbieCustomer;
+    // console.log('new', this.currentCustomer);
     this.hotel = new Hotel(this.allData);
-  }
-
-  captureReturnCustomer(name, id) {
-    this.currentCustomer = new Customer(name, id);
+    return newbieCustomer;
   }
 
   bookARoom(date, roomNumber) {

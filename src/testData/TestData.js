@@ -238,7 +238,7 @@ const rooms = {
       costPerNight: 229.67
     },
     {
-      number: 20,
+      number: 99,
       roomType: "suite",
       bidet: false,
       bedSize: "twin",
@@ -357,13 +357,13 @@ const roomServices = {
   roomServices: [
     {
       userID: 34,
-      date: "21/10/2019",
+      date: "21/08/2019",
       food: "Generic Plastic Sandwich",
       totalCost: 9.48
     },
     {
       userID: 37,
-      date: "24/12/2019",
+      date: "17/11/2019",
       food: "Generic Soft Sandwich",
       totalCost: 24.24
     },

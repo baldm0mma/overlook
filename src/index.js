@@ -38,12 +38,12 @@ let admin;
 $(document).ready(function() {
 
   setTimeout( () => {
+    // console.log(combinedData);
     admin = new Admin(combinedData);
   }, 1000);
 
   setTimeout( () => {
     domUpdates.populateAllTabs(admin);
-    domUpdates.updateTimeAndDateAtInterval(admin);
   }, 1500);
 
   $('ul.tabs li').click(function() {
@@ -60,7 +60,12 @@ $(document).ready(function() {
   });
 
   $('#returned-name').click(function() {
-    domUpdates.makeSearchedCustomerFocus();
+    domUpdates.focusSearchedCustomer();
+    // console.log(admin.currentCustomer);
+  });
+
+  $('#create-new-customer-button').click(function() {
+    domUpdates.focusNewCustomer(admin);
   });
 
 });
