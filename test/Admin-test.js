@@ -30,8 +30,6 @@ describe('Admin', function() {
   });
 
   it('should have a method that instantiates the Hotel class', function() {
-    expect(admin.hotel).to.be.an('undefined');
-    admin.initiateHotelBenchmarks();
     expect(admin.hotel).to.be.an.instanceof(Hotel);
   });
 
@@ -46,6 +44,7 @@ describe('Admin', function() {
     expect(admin.users.length).to.eql(20);
     admin.createNewCustomer('Jevbert');
     expect(admin.currentCustomer).to.be.an.instanceof(Customer);
+    expect(admin.currentCustomer.id).to.eql(21);
     expect(admin.users.length).to.eql(21);
   });
 
@@ -56,11 +55,17 @@ describe('Admin', function() {
     expect(admin.currentCustomer.name).to.eql('Autumn Toy');
   });
 
-  it('should have a method for a customer to book a room', function() {
+  it('should have a method for a customer to book and unbook a room', function() {
     expect(admin.bookings).to.have.length(20);
     admin.createNewCustomer('Jevbert');
     admin.bookARoom('11/03/19', 67);
     expect(admin.bookings).to.have.length(21);
+
+    admin.currentCustomer = { id: 1, name: "Autumn Toy" };
+    admin.currentCustomerBooking = { userID: 1, date: "21/08/2019", roomNumber: 143 };
+    expect(admin.bookings.length).to.eql(21);
+    admin.cancelBooking("21/08/2019");
+    expect(admin.bookings.length).to.eql(20);
   });
 
 });
