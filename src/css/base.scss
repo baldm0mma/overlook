@@ -1,6 +1,48 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-color: #894f62;
+$secondary-color: #bc4555;
+$tertiary-color: #fa1e3c;
+$quaternary-color: #b1bb78;
+$quinary-color: #eed59a;
+$senary-color: #69d2e7;
 
-body {
-  background-color: $primary-background;
+body{
+  background-color: $primary-color;
+  margin-top: 20px;
+  font-family: 'Trebuchet MS', serif;
+  line-height: 1.6
+}
+
+.container{
+  width: 800px;
+  margin: 0 auto;
+}
+
+ul.tabs{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul.tabs li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs li.current{
+  background: #ededed;
+  color: #222;
+}
+
+.tab-content{
+  display: none;
+  background: #ededed;
+  padding: 15px;
+}
+
+.tab-content.current{
+  display: inherit;
+  height: 500px;
 }
