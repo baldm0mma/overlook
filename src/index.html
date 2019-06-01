@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Hotel, Motel Holiday Inn...</title>
+    <title>Hotel, Motel, Holiday Inn...</title>
   </head>
   <body>
 
     <header>
-      <h1>Welcome to Hotel Tracker, we're glad you're back with us!</h1>
-      <h3 class="current-customer-name"></h3>
+      <h1>Welcome back!</h1>
+      <h3 id="todays-date"></h3>
+      <h3 id="current-time"></h3>
+      <h3 id="current-customer-info"></h3>
     </header>
     <div class="container">
 
@@ -19,27 +21,38 @@
       </ul>
     
       <div id="main" class="tab-content current">
-        <h4 class="main-title">Total Rooms Available for today's date</h4>
-        <p class="main-content total-rooms">Calculating...</p>
-        <h4 class="main-title">Total earned if all debt's are paid for today's date</h4>
-        <p class="main-content total-earned">Calculating...</p>
-        <h4 class="main-title">Percentage of rooms occupied for today's date</h4>
-        <p class="main-content percent-occupied">Calculating...</p>
+        <section class="main section 1">
+          <h4 class="main-title">Total Rooms Available for today's date</h4>
+          <p class="main-content total-rooms"></p>
+        </section>
+        <section class="main section 2">
+          <h4 class="main-title">Total earned if all debt's are paid for today's date</h4>
+          <p class="main-content total-earned"></p>
+        </section>
+        <section class="main section 3">
+          <h4 class="main-title">Percentage of rooms occupied for today's date</h4>
+          <p class="main-content percent-occupied"></p>
+        </section>
       </div>
 
       <div id="customer" class="tab-content">
-        <h4>You can search for a exsisting customer below.</h4>
-        <form>
-          <label for="search-name">Search database with customer's full name:</label>
-          <input type="text" id="search-name" value="Enter full name here">
-          <button type="button">Submit</button>
-        </form> 
-        <h4>Or, here you can create a new customer. Please enter a first and last name, and they will be entered into our database.</h4>
-        <form>
-          <label for="enter-new-name">Create new customer with full name:</label>
-          <input type="text" id="enter-new-name" value="Enter full name here">
-          <button type="button">Submit</button>
-        </form> 
+        <section class="customer section 1">
+          <h4>You can search for a exsisting customer below.</h4>
+          <form>
+            <label for="search-name">Search database with customer's full name:</label>
+            <input type="text" id="search-name">
+            <button type="button" id="search-name-button">Submit</button>
+            <p id="returned-name"></p>
+          </form> 
+        </section>
+        <section class="customer section 2">
+          <h4>Or, here you can create a new customer. Please enter a first and last name, and they will be entered into our database.</h4>
+          <form>
+            <label for="enter-new-name">Create new customer with full name:</label>
+            <input type="text" id="enter-new-name">
+            <button type="button">Submit</button>
+          </form> 
+        </section>
       </div>
 
       <div id="rooms" class="tab-content">
