@@ -33,16 +33,17 @@ Promise.all([users, roomServices, bookings, rooms])
 
 let admin;
 
-setTimeout(console.log(combinedData), 2000);
+// setTimeout(console.log(combinedData), 2000);
 
 $(document).ready(function() {
-  
+
   setTimeout( () => {
     admin = new Admin(combinedData);
   }, 1000);
 
   setTimeout( () => {
     domUpdates.populateAllTabs(admin);
+    domUpdates.updateTimeAndDateAtInterval(admin);
   }, 1500);
 
   $('ul.tabs li').click(function() {
@@ -53,6 +54,13 @@ $(document).ready(function() {
     $("#" + tab_id).addClass('current');
   });
 
-  $('')
+  $('#search-name-button').click(function() {
+    let searchTerm = $('#search-name').val();
+    domUpdates.returnSeacrhedCustomerName(admin, searchTerm);
+  });
+
+  $('#returned-name').click(function() {
+    domUpdates.makeSearchedCustomerFocus();
+  });
 
 });
