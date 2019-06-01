@@ -30,8 +30,6 @@ describe('Admin', function() {
   });
 
   it('should have a method that instantiates the Hotel class', function() {
-    expect(admin.hotel).to.be.an('undefined');
-    admin.initiateHotelBenchmarks();
     expect(admin.hotel).to.be.an.instanceof(Hotel);
   });
 
