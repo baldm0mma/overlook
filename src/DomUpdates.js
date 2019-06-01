@@ -6,9 +6,9 @@ const domUpdates = {
   
   populateAllTabs(admin) {
     $('#todays-date').text(admin.today).hide().fadeIn(2000);
-    $('.total-rooms').text(admin.hotel.generateAvailableRoomNumbersToday().length).hide().fadeIn(2000);
-    $('.total-earned').text(admin.hotel.calculateAllDebtsToday()).hide().fadeIn(2000);
-    $('.percent-occupied').text(admin.hotel.showPercentageOfRoomsOccupiedToday() + '%').hide().fadeIn(2000);
+    $('.total-rooms').text(admin.hotel.generateAvailableRoomNumbersByDate(admin.today).length).hide().fadeIn(2000);
+    $('.total-earned').text(admin.hotel.calculateAllDebtsToday(admin.today)).hide().fadeIn(2000);
+    $('.percent-occupied').text(admin.hotel.showPercentageOfRoomsOccupiedByDate(admin.today) + '%').hide().fadeIn(2000);
   },
 
   returnSeacrhedCustomerName(admin, searchTerm) {
