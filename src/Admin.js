@@ -1,6 +1,6 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
-import AllServices from './AllServices';
+// import AllServices from './AllServices';
 import Bookings from './Bookings';
 // import DomUpdates from './DomUpdates';
 
@@ -14,8 +14,8 @@ class Admin {
     this.today = this.generateDateToday();
     this.hotel = this.initiateHotelBenchmarks();
     this.currentCustomer;
-    this.customerBooking;
-    this.customerService;
+    this.currentCustomerBooking;
+    this.currentCustomerService;
     // console.log('users', this.users);
   }
 
@@ -74,10 +74,12 @@ class Admin {
     this.hotel = new Hotel(this.allData);
   }
 
-  cancelBooking() {
-    // this.bookings
-    this.hotel = new Hotel(this.allData);
-  }
+  // cancelBooking() {
+  //   this.bookings.findIndex(booking => {
+  //     if (this.currentCustomerBooking.)
+  //   })
+  //   this.hotel = new Hotel(this.allData);
+  // }
 
   purchaseRoomService() {
 

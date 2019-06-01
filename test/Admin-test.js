@@ -44,6 +44,7 @@ describe('Admin', function() {
     expect(admin.users.length).to.eql(20);
     admin.createNewCustomer('Jevbert');
     expect(admin.currentCustomer).to.be.an.instanceof(Customer);
+    expect(admin.currentCustomer.id).to.eql(21);
     expect(admin.users.length).to.eql(21);
   });
 
