@@ -13,7 +13,7 @@ describe('Hotel', function() {
   let hotel;
 
   beforeEach(function() {
-    hotel = new Hotel();
+    hotel = new Hotel(customerTestData);
 
   });
 

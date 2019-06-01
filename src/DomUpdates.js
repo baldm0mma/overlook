@@ -11,8 +11,8 @@ const domUpdates = {
   },
   
   populateAllTabs(admin) {
-    $('.total-rooms').text(admin.hotel.generateAvailableRoomNumbers().length).hide().fadeIn(2000);
-    $('.total-earned').text(admin.hotel.calculateDebtsToday()).hide().fadeIn(2000);
+    $('.total-rooms').text(admin.hotel.generateAvailableRoomNumbersToday().length).hide().fadeIn(2000);
+    $('.total-earned').text(admin.hotel.calculateAllDebtsToday()).hide().fadeIn(2000);
     $('.percent-occupied').text(admin.hotel.showPercentageOfRoomsOccupiedToday()).hide().fadeIn(2000);
   },
 
