@@ -39,10 +39,11 @@ $(document).ready(function() {
   
   setTimeout( () => {
     admin = new Admin(combinedData);
-    // console.log(admin);
   }, 1000);
 
-  admin = new Admin(combinedData);
+  setTimeout( () => {
+    domUpdates.populateAllTabs(admin);
+  }, 1500);
 
   $('ul.tabs li').click(function() {
     var tab_id = $(this).attr('data-tab');
@@ -52,8 +53,6 @@ $(document).ready(function() {
     $("#" + tab_id).addClass('current');
   });
 
-  setTimeout( () => {
-    domUpdates.populateAllTabs(admin);
-  }, 1500);
+  $('')
 
 });
