@@ -434,7 +434,7 @@ const roomServices = {
       totalCost: 22.69
     },
     {
-      userID: 36,
+      userID: 1,
       date: "02/11/2019",
       food: "Handmade Steel Sandwich",
       totalCost: 11.16

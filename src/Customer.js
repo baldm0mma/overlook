@@ -25,7 +25,7 @@ class Customer {
     });
   }
 
-  calculateRoomRentalCost(date) {
+  calculateRoomRentalCostByDate(date) {
     let bookingByDate = this.returnCustomerBookingbyDate(date);
     return bookingByDate.reduce((totalRoomRentalDebt, booking) => {
       this.rooms.forEach(room => {
@@ -37,7 +37,7 @@ class Customer {
     }, 0);
   }
 
-  calculateRoomServiceCost(date) {
+  calculateRoomServiceCostByDate(date) {
     return this.roomServices.reduce((acc, roomService) => {
       if (roomService.date === date && roomService.userID === this.id) {
         acc += roomService.totalCost;
@@ -46,8 +46,17 @@ class Customer {
     }, 0);
   }
 
+  calculateLifetimeRoomServiceCost() {
+    return this.roomServices.reduce((acc, roomService) => {
+      if (roomService.userID === this.id) {
+        acc += roomService.totalCost;
+      }
+      return acc;
+    }, 0);
+  }
+
   calculateFinalBill(date) {
-    return this.calculateRoomRentalCost(date) + this.calculateRoomServiceCost(date);
+    return this.calculateRoomRentalCostByDate(date) + this.calculateRoomServiceCostByDate(date);
   }
 
   calculateLifetimeExpenditures() {
@@ -68,6 +77,18 @@ class Customer {
     }, 0);
     return lifetimeRoomRentalCharges + lifetimeRoomServiceCharges;
   }
+
+  generateAllRoomServicesForCustomer() {
+    return this.roomServices.filter(service => {
+      if (service.userID === this.id) {
+        return service;
+      }
+    });
+  }
+
+  // - Breakdown of dates and dollar amounts for room service
+  // - Total dollar amount spent on room service for a particular day
+  // - Total dollar amount spent on room service for a all days ever
 
 }
 
