@@ -10,7 +10,7 @@ class Admin {
     this.bookings = this.allData.bookings.bookings;
     this.roomServices = this.allData.roomServices.roomServices;
     this.today = this.generateDateToday();
-    this.hotel = this.initiateBenchmarks();
+    this.hotelBenchmarks = this.initiateHotelBenchmarks();
     this.currentCustomer;
     this.currentCustomerBooking;
     this.currentCustomerService; 
@@ -31,7 +31,7 @@ class Admin {
     return (mm + '/' + dd + '/' + yyyy);
   }
 
-  initiateBenchmarks() {
+  initiateHotelBenchmarks() {
     return new Hotel(this.allData, this.today);
   }
 

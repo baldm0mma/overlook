@@ -30,7 +30,7 @@ describe('Admin', function() {
   });
 
   it('should have a method that instantiates the Hotel class', function() {
-    expect(admin.hotel).to.be.an.instanceof(Hotel);
+    expect(admin.hotelBenchmarks).to.be.an.instanceof(Hotel);
   });
 
   it('should have a method that returns a user object when given a search parameter of a name, or ID, and, should return "null" if the user does not exsist', function() {

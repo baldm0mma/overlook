@@ -5,6 +5,10 @@ $quaternary-color: #b1bb78;
 $quinary-color: #eed59a;
 $senary-color: #69d2e7;
 
+* {
+  border: solid 2px red;
+}
+
 body {
   background-color: $quaternary-color;
   margin-top: 20px;
@@ -14,10 +18,21 @@ body {
 
 header {
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
 }
 
-h1 {
+.header-style {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1, h3 {
   color: $primary-color;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .container {
@@ -53,20 +68,22 @@ ul.tabs li.current {
 .tab-content.current {
   display: flex;
   height: 400px;
+  justify-content: center;
 }
 
-.main.section {
+.main.section, .orders-style {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 0px 25px;
     p {
-      font-size: 80px;
+      font-size: 40px;
+      margin: 20px 0;
     }
 }
 
-.customer.section {
+.customer.section, .orders.section {
   display: flex;
   flex-direction: column;
   align-items: center;

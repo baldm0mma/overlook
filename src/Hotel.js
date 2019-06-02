@@ -9,8 +9,8 @@ class Hotel {
     this.bookings = data.bookings.bookings;
     this.roomServices = data.roomServices.roomServices;
     this.today = today;
-    this.services;
-    this.bookings;
+    this.servicesBenchmarks = this.initiateRoomServiceBenchmarks();
+    this.bookingBenchmarks = this.initiateBookingBenchmarks();
     // console.log(this.allData.bookings.bookings);
   }
 
@@ -32,6 +32,7 @@ class Hotel {
   }
 
   generateAvailableRoomNumbersByDate(date) {
+    console.log(this.bookings);
     return this.bookings.reduce((availableRoomNums, currentBooking) => {
       if (currentBooking.date !== date) {
         availableRoomNums.push(currentBooking.roomNumber);

@@ -37,12 +37,15 @@ let admin;
 
 $(document).ready(function() {
 
+  $('.customer-view').hide();
+
   setTimeout( () => {
     // console.log(combinedData);
     admin = new Admin(combinedData);
   }, 1000);
 
   setTimeout( () => {
+    // console.log(admin.rooms);
     domUpdates.populateAllTabs(admin);
   }, 1500);
 
@@ -60,12 +63,19 @@ $(document).ready(function() {
   });
 
   $('#returned-name').click(function() {
-    domUpdates.focusSearchedCustomer();
+    domUpdates.focusSearchedCustomer(admin);
+    domUpdates.changeContent();
     // console.log(admin.currentCustomer);
   });
 
   $('#create-new-customer-button').click(function() {
     domUpdates.focusNewCustomer(admin);
+    domUpdates.changeContent();
+  });
+
+  $('#roomservice-by-date-button').click(function() {
+    let date = $('#roomservice-by-date').val();
+    domUpdates.showServicesByDate(admin, date);
   });
 
 });
