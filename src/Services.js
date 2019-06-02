@@ -1,17 +1,11 @@
 class Services {
-  constructor(data, customer, today) {
-    this.users = data.users;
+  constructor(data, today) {
     this.roomServices = data.roomServices;
-    this.currentCustomer = customer;
     this.today = today;
   }
 
-  generateAllOrdersForToday() {
-    return this.roomServices.filter(service => service.date === this.today);
-  }
-
-  generateAllOrdersForDate() {
-
+  generateAllOrdersForDate(date) {
+    return this.roomServices.filter(service => service.date === date);
   }
 
 }
