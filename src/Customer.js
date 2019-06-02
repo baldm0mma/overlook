@@ -86,10 +86,6 @@ class Customer {
     });
   }
 
-  // - Breakdown of dates and dollar amounts for room service
-  // - Total dollar amount spent on room service for a particular day
-  // - Total dollar amount spent on room service for a all days ever
-
 }
 
 export default Customer;

@@ -83,8 +83,14 @@ class Admin {
     this.hotel = new Hotel(this.allData);
   }
 
-  purchaseRoomService() {
-    this.currentCustomer;
+  purchaseRoomService(food, cost) {
+    let newRoomService = {
+      userID: this.currentCustomer.id,
+      date: this.today,
+      food,
+      totalCost: cost
+    }
+    this.roomServices.push(newRoomService);
     this.hotel = new Hotel(this.allData);
   }
 
