@@ -47,11 +47,15 @@ describe('Customer', function() {
   });
 
   it('should have a method that calculates room rental costs for a customer by date', function() {
-    expect(customer.calculateRoomRentalCost("22/02/2020")).to.equal(344.89);
+    expect(customer.calculateRoomRentalCostByDate("22/02/2020")).to.equal(344.89);
   });
 
   it('should have a method that calculates roomservice charges for a customer by date', function() {
-    expect(customer.calculateRoomServiceCost("15/07/2019")).to.equal(13.07);
+    expect(customer.calculateRoomServiceCostByDate("15/07/2019")).to.equal(13.07);
+  });
+
+  it('should have a method that calculates a lifetime total of roomservice charges for a customer', function() {
+    expect(customer.calculateLifetimeRoomServiceCost()).to.equal(24.23);
   });
 
   it('should have a method that calculates a customer\'s final bill by date', function() {
@@ -59,7 +63,7 @@ describe('Customer', function() {
   });
 
   it('should have a method that calculates lifetime expenditures of a given customer', function() {
-    expect(customer.calculateLifetimeExpenditures()).to.equal(612.86);
+    expect(customer.calculateLifetimeExpenditures()).to.equal(624.02);
   });
 
 });
