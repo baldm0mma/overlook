@@ -102,7 +102,7 @@ const rooms = {
       costPerNight: 462.7
     },
     {
-      number: 3,
+      number: 73,
       roomType: "single room",
       bidet: false,
       bedSize: "queen",
@@ -251,7 +251,7 @@ const rooms = {
 const bookings = {
   bookings: [
     {
-      userID: 1,
+      userID: 10,
       date: "21/08/2019",
       roomNumber: 143
     },
@@ -261,7 +261,7 @@ const bookings = {
       roomNumber: 108
     },
     {
-      userID: 5,
+      userID: 1,
       date: "31/08/2019",
       roomNumber: 8
     },
@@ -281,7 +281,7 @@ const bookings = {
       roomNumber: 158
     },
     {
-      userID: 31,
+      userID: 1,
       date: "22/02/2020",
       roomNumber: 73
     },
@@ -368,7 +368,7 @@ const roomServices = {
       totalCost: 24.24
     },
     {
-      userID: 9,
+      userID: 1,
       date: "15/07/2019",
       food: "Tasty Fresh Sandwich",
       totalCost: 13.07
