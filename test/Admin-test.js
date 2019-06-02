@@ -61,4 +61,14 @@ describe('Admin', function() {
     expect(admin.bookings.length).to.eql(20);
   });
 
+  it('should have a method for a customer to add a roomservice', function() {
+    expect(admin.roomServices).to.have.length(20);
+    admin.createNewCustomer('Jevbert');
+    admin.purchaseRoomService('sammy', 10.00);
+    expect(admin.roomServices).to.have.length(21);
+
+    expect(admin.currentCustomer.name).to.equal('Jevbert');
+    expect(admin.currentCustomerService.totalCost).to.equal(10.00);
+  });
+
 });

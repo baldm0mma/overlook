@@ -1,7 +1,5 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
-// import AllServices from './AllServices';
-import Bookings from './Bookings';
 // import DomUpdates from './DomUpdates';
 
 class Admin {
@@ -12,7 +10,7 @@ class Admin {
     this.bookings = this.allData.bookings.bookings;
     this.roomServices = this.allData.roomServices.roomServices;
     this.today = this.generateDateToday();
-    this.hotel = this.initiateHotelBenchmarks();
+    this.hotel = this.initiateBenchmarks();
     this.currentCustomer;
     this.currentCustomerBooking;
     this.currentCustomerService; 
@@ -33,7 +31,7 @@ class Admin {
     return (mm + '/' + dd + '/' + yyyy);
   }
 
-  initiateHotelBenchmarks() {
+  initiateBenchmarks() {
     return new Hotel(this.allData, this.today);
   }
 
@@ -57,7 +55,6 @@ class Admin {
     let newbieCustomer = new Customer(name, null, this.allData);
     this.users.push(newbieCustomer);
     this.currentCustomer = newbieCustomer;
-    // console.log('new', this.currentCustomer);
     this.hotel = new Hotel(this.allData);
     return newbieCustomer;
   }
@@ -68,6 +65,7 @@ class Admin {
       date,
       roomNumber
     };
+    this.currentCustomerBooking = newBooking;
     this.bookings.push(newBooking);
     this.hotel = new Hotel(this.allData);
   }
@@ -90,14 +88,13 @@ class Admin {
       food,
       totalCost: cost
     }
+    this.currentCustomerService = newRoomService;
     this.roomServices.push(newRoomService);
     this.hotel = new Hotel(this.allData);
   }
 
   upgradeRoom() {
-    
     this.hotel = new Hotel(this.allData);
-    this.bookings = new Bookings(this.allData);
   }
 
 }
