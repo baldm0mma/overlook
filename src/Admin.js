@@ -15,7 +15,7 @@ class Admin {
     this.hotel = this.initiateHotelBenchmarks();
     this.currentCustomer;
     this.currentCustomerBooking;
-    this.currentCustomerService;
+    this.currentCustomerService; 
     // console.log('users', this.users);
   }
 
@@ -42,11 +42,11 @@ class Admin {
     parseInt(searchTerm) ? strNum = parseInt(searchTerm) : strNum = searchTerm;
     if (typeof strNum === 'string') {
       let string = this.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
-      string ? this.currentCustomer = new Customer(string.name, string.id) : null;
+      string ? this.currentCustomer = new Customer(string.name, string.id, this.allData) : null;
       return string ? string : null;
     } else if (typeof strNum === 'number') {
       let number = this.users.find(cust => cust.id === strNum);
-      this.currentCustomer = new Customer(number.name, number.id);
+      this.currentCustomer = new Customer(number.name, number.id, this.allData);
       return number ? number : null;
     } else {
       return null;
@@ -54,7 +54,7 @@ class Admin {
   }
 
   createNewCustomer(name) {
-    let newbieCustomer = new Customer(name, this.users.length + 1);
+    let newbieCustomer = new Customer(name, null, this.allData);
     this.users.push(newbieCustomer);
     this.currentCustomer = newbieCustomer;
     // console.log('new', this.currentCustomer);
