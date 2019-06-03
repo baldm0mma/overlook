@@ -30,7 +30,7 @@ describe('Admin', function() {
   });
 
   it('should have a method that instantiates the Hotel class', function() {
-    expect(admin.hotel).to.be.an.instanceof(Hotel);
+    expect(admin.hotelBenchmarks).to.be.an.instanceof(Hotel);
   });
 
   it('should have a method that returns a user object when given a search parameter of a name, or ID, and, should return "null" if the user does not exsist', function() {
@@ -59,6 +59,16 @@ describe('Admin', function() {
     expect(admin.bookings.length).to.eql(21);
     admin.cancelBooking("21/08/2019");
     expect(admin.bookings.length).to.eql(20);
+  });
+
+  it('should have a method for a customer to add a roomservice', function() {
+    expect(admin.roomServices).to.have.length(20);
+    admin.createNewCustomer('Jevbert');
+    admin.purchaseRoomService('sammy', 10.00);
+    expect(admin.roomServices).to.have.length(21);
+
+    expect(admin.currentCustomer.name).to.equal('Jevbert');
+    expect(admin.currentCustomerService.totalCost).to.equal(10.00);
   });
 
 });

@@ -1,11 +1,25 @@
+import Services from "./Services";
+import Bookings from "./Bookings";
+
 class Hotel {
   constructor(data, today) {
+    this.allData = data;
     this.users = data.users.users;
     this.rooms = data.rooms.rooms;
     this.bookings = data.bookings.bookings;
     this.roomServices = data.roomServices.roomServices;
     this.today = today;
-    // console.log('bookings', this.users);
+    this.servicesBenchmarks = this.initiateRoomServiceBenchmarks();
+    this.bookingBenchmarks = this.initiateBookingBenchmarks();
+    // console.log(this.allData.bookings.bookings);
+  }
+
+  initiateRoomServiceBenchmarks() {
+    return new Services(this.allData.roomServices);
+  }
+
+  initiateBookingBenchmarks() {
+    return new Bookings(this.allData.bookings);
   }
 
   bookingsByDate(date) {
@@ -18,6 +32,7 @@ class Hotel {
   }
 
   generateAvailableRoomNumbersByDate(date) {
+    // console.log(this.bookings);
     return this.bookings.reduce((availableRoomNums, currentBooking) => {
       if (currentBooking.date !== date) {
         availableRoomNums.push(currentBooking.roomNumber);

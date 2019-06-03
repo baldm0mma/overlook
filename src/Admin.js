@@ -1,7 +1,5 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
-// import AllServices from './AllServices';
-import Bookings from './Bookings';
 // import DomUpdates from './DomUpdates';
 
 class Admin {
@@ -12,7 +10,7 @@ class Admin {
     this.bookings = this.allData.bookings.bookings;
     this.roomServices = this.allData.roomServices.roomServices;
     this.today = this.generateDateToday();
-    this.hotel = this.initiateHotelBenchmarks();
+    this.hotelBenchmarks = this.initiateHotelBenchmarks();
     this.currentCustomer;
     this.currentCustomerBooking;
     this.currentCustomerService; 
@@ -30,7 +28,7 @@ class Admin {
     if (mm < 10) {
       mm = '0' + mm;
     }
-    return (mm + '/' + dd + '/' + yyyy);
+    return (dd + '/' + mm + '/' + yyyy);
   }
 
   initiateHotelBenchmarks() {
@@ -57,7 +55,6 @@ class Admin {
     let newbieCustomer = new Customer(name, null, this.allData);
     this.users.push(newbieCustomer);
     this.currentCustomer = newbieCustomer;
-    // console.log('new', this.currentCustomer);
     this.hotel = new Hotel(this.allData);
     return newbieCustomer;
   }
@@ -68,6 +65,7 @@ class Admin {
       date,
       roomNumber
     };
+    this.currentCustomerBooking = newBooking;
     this.bookings.push(newBooking);
     this.hotel = new Hotel(this.allData);
   }
@@ -83,15 +81,20 @@ class Admin {
     this.hotel = new Hotel(this.allData);
   }
 
-  purchaseRoomService() {
-    this.currentCustomer;
+  purchaseRoomService(food, cost) {
+    let newRoomService = {
+      userID: this.currentCustomer.id,
+      date: this.today,
+      food,
+      totalCost: cost
+    }
+    this.currentCustomerService = newRoomService;
+    this.roomServices.push(newRoomService);
     this.hotel = new Hotel(this.allData);
   }
 
   upgradeRoom() {
-    
     this.hotel = new Hotel(this.allData);
-    this.bookings = new Bookings(this.allData);
   }
 
 }

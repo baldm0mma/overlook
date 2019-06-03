@@ -66,4 +66,9 @@ describe('Customer', function() {
     expect(customer.calculateLifetimeExpenditures()).to.equal(624.02);
   });
 
+  it('should have a method that calculates', function() {
+    console.log(customer.generateAllRoomServicesForCustomer());
+    expect(customer.generateAllRoomServicesForCustomer().length).to.equal(2);
+  })
+
 });

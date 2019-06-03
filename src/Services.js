@@ -1,7 +1,6 @@
 class Services {
-  constructor(data, today) {
+  constructor(data) {
     this.roomServices = data.roomServices;
-    this.today = today;
   }
 
   generateAllOrdersForDate(date) {
