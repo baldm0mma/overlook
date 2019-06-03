@@ -32,7 +32,7 @@ class Hotel {
   }
 
   generateAvailableRoomNumbersByDate(date) {
-    console.log(this.bookings);
+    // console.log(this.bookings);
     return this.bookings.reduce((availableRoomNums, currentBooking) => {
       if (currentBooking.date !== date) {
         availableRoomNums.push(currentBooking.roomNumber);

@@ -15,7 +15,7 @@ body {
   font-family: 'Trebuchet MS', serif;
   line-height: 1.6;
   background-image: url('../../assets/background.jpg');
-  background-size: 100vw;
+  background-size: 130vw;
 }
 
 header {
@@ -72,8 +72,9 @@ ul.tabs li.current {
 
 .tab-content.current {
   display: flex;
-  height: 350px;
+  height: 400px;
   justify-content: center;
+  text-shadow:white 1px 0 10px;
 }
 
 .main.section, .orders-style, .rooms.section {
