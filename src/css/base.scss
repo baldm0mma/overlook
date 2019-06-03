@@ -6,18 +6,20 @@ $quinary-color: #eed59a;
 $senary-color: #69d2e7;
 
 * {
-  border: solid 2px red;
+  // border: solid 2px red;
+  color: #333;
 }
 
 body {
-  background-color: $quaternary-color;
   margin-top: 20px;
   font-family: 'Trebuchet MS', serif;
-  line-height: 1.6
+  line-height: 1.6;
+  background-image: url('../../assets/background.jpg');
+  background-size: 100vw;
 }
 
 header {
-  height: 200px;
+  height: 175px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,9 +32,10 @@ header {
 }
 
 h1, h3 {
-  color: $primary-color;
+  color: white;
   margin-bottom: 20px;
   text-align: center;
+  text-shadow: black 1px 0 10px;
 }
 
 .container {
@@ -48,10 +51,11 @@ ul.tabs {
 
 ul.tabs li {
   background: none;
-  color: #222;
+  color: white;
   display: inline-block;
   padding: 10px 15px;
   cursor: pointer;
+  border-radius: 10px 10px 0 0;
 }
 
 ul.tabs li.current {
@@ -63,24 +67,29 @@ ul.tabs li.current {
   display: none;
   background: #ededed;
   padding: 15px;
+  border-radius: 0 0 10px 10px;
 }
 
 .tab-content.current {
   display: flex;
-  height: 400px;
+  height: 350px;
   justify-content: center;
 }
 
-.main.section, .orders-style {
+.main.section, .orders-style, .rooms.section {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0px 25px;
+  padding: 0;
     p {
       font-size: 40px;
       margin: 20px 0;
     }
+}
+
+.main.section {
+  padding: 0px 25px;
 }
 
 .customer.section, .orders.section {

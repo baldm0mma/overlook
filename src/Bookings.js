@@ -4,14 +4,16 @@ class Bookings {
   }
 
   generateMostPopularBookingDate() {
-    return this.bookings.reduce((popularDates, booking) => {
-      if (!popularDates[booking.date]) {
-        popularDates[booking.date] = 1;
+    let mostPopularDates = this.bookings.reduce((dates, booking) => {
+      if (!dates[booking.date]) {
+        dates[booking.date] = 1;
       } else {
-        popularDates[booking.date]++;
+        dates[booking.date]++;
       }
-      return popularDates;
+      return dates;
     }, {});
+    let maxNum = Math.max(...Object.values(mostPopularDates));
+    return Object.keys(mostPopularDates).find(date => mostPopularDates[date] === maxNum);
   }
 
 }

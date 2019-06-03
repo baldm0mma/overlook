@@ -10,6 +10,7 @@ const domUpdates = {
     $('.total-earned').text(admin.hotelBenchmarks.calculateAllDebtsToday(admin.today)).hide().fadeIn(2000);
     $('.percent-occupied').text(admin.hotelBenchmarks.showPercentageOfRoomsOccupiedByDate(admin.today) + '%').hide().fadeIn(2000);
     $('.total-orders').text(admin.hotelBenchmarks.servicesBenchmarks.generateAllOrdersForDate(admin.today).length).hide().fadeIn(2000);
+    $('.most-pop-booking').text(admin.hotelBenchmarks.bookingBenchmarks.generateMostPopularBookingDate()).hide().fadeIn(2000);
   },
 
   returnSeacrhedCustomerName(admin, searchTerm) {
@@ -18,7 +19,7 @@ const domUpdates = {
       $('#returned-name').text('Click here for ' + currentCustomer.name + '.');
       $('form').trigger('reset');
     } else {
-      $('#returned-name').text('Sorry, they don\'t exsist in our database yet. Would you like to add them to our system?');
+      $('#returned-name').text('Holy fuck! That person doesn\'t exsist in our system... but after verifying, they DO exsist in the local federal penitentiary database! CALL 911! ... Or, just add them to our system on the right.');
       $('form').trigger('reset');
     }
   },
@@ -31,6 +32,7 @@ const domUpdates = {
 
   showServicesByDate(admin, date) {
     $('.customer-orders-by-date').text(admin.currentCustomer.calculateRoomServiceCostByDate(date));
+    $('form').trigger('reset');
   },
 
   focusSearchedCustomer(admin) {
