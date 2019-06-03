@@ -78,4 +78,9 @@ $(document).ready(function() {
     domUpdates.showServicesByDate(admin, date);
   });
 
+  $('#bookings-by-date-button').click(function() {
+    let date = $('#bookings-by-date').val();
+    domUpdates.findBookingsByDate(admin, date);
+  });
+
 });

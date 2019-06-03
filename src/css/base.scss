@@ -6,8 +6,9 @@ $quinary-color: #eed59a;
 $senary-color: #69d2e7;
 
 * {
-  // border: solid 2px red;
+  // border: solid 1px red;
   color: #333;
+  font-family: 'Cinzel', serif;
 }
 
 body {
@@ -15,7 +16,7 @@ body {
   font-family: 'Trebuchet MS', serif;
   line-height: 1.6;
   background-image: url('../../assets/background.jpg');
-  background-size: 130vw;
+  background-size: 135vw;
 }
 
 header {
@@ -26,6 +27,11 @@ header {
   margin: 0;
 }
 
+#todays-date {
+  margin-right: 50px;
+  font-size: 30px;
+}
+
 .header-style {
   display: flex;
   justify-content: space-between;
@@ -33,9 +39,13 @@ header {
 
 h1, h3 {
   color: white;
-  margin-bottom: 20px;
+  margin: 10px 30px;
   text-align: center;
   text-shadow: black 1px 0 10px;
+}
+
+h4{
+  font-size: 20px;
 }
 
 .container {
@@ -74,23 +84,33 @@ ul.tabs li.current {
   display: flex;
   height: 400px;
   justify-content: center;
-  text-shadow:white 1px 0 10px;
+  // text-shadow:white 1px 0 10px;
 }
 
-.main.section, .orders-style, .rooms.section {
+.main.section, .rooms.section {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0;
+  // padding: 0px 15px;
+  margin: 15px;
+  border-radius: 8px;
+  width: 33.3%;
+  background-color: #e5e5e5;
+  border: solid 2px #cce5e8;
     p {
-      font-size: 40px;
-      margin: 20px 0;
+      font-size: 25px;
+      margin: 10px 0;
     }
 }
 
 .main.section {
-  padding: 0px 25px;
+  // padding: 0px 25px;
+}
+
+.orders.content p {
+  font-size: 25px;
+  margin: 10px 0;
 }
 
 .customer.section, .orders.section {
@@ -98,7 +118,28 @@ ul.tabs li.current {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0px 25px;
+  padding: 0px 15px;
+  margin: 15px;
+  width: 50%;
+  background-color: #e5e5e5;
+  border: solid 2px #cce5e8;
+  border-radius: 8px;
+    p {
+      font-size: 25px;
+      margin: 10px 0;
+    }
+}
+
+.orders.section {
+  width: 25%;
+  font-size: 50px;
+}
+
+.orders-breakdown {
+  font-size: 25px;
+}
+
+.orders.section.3 {
   width: 50%;
 }
 
@@ -106,7 +147,12 @@ form {
   display: flex;
   flex-direction: column;
   padding: 0px 25px;
-    input {
+}
 
-    }
+th, td {
+  font-size: 12px;
+}
+
+th {
+  font-size: 14px;
 }

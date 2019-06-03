@@ -2,12 +2,13 @@
 <html lang="en-US">
   <head>
     <title>Hotel, Motel, Holiday Inn...</title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
   </head>
   <body>
 
     <header>
       <div class="header-style">
-        <h1>Welcome back!</h1>
+        <h1 id="hotel-name"></h1>
         <h3 id="todays-date"></h3>
       </div>
       <h3 id="current-customer-info"> </h3>
@@ -47,7 +48,7 @@
           </form> 
         </section>
         <section class="customer section 2">
-          <h4>Or, here you can create a new customer. Please enter a first and last name, and they will be entered into our database.</h4>
+          <h4>Please enter a first and last name, and they will be entered into our database.</h4>
           <form>
             <label for="enter-new-name">Create new customer with full name:</label>
             <input type="text" id="enter-new-name">
@@ -58,14 +59,14 @@
 
       <div id="orders" class="tab-content">
         <section class="orders section 1 default">
-          <div class="orders-style">
+          
             <h4 class="orders-title">Total Roomservice orders for today's date</h4>
             <p class="orders-content total-orders"></p>
-          </div>
+          
         </section>
 
         <section class="orders section 1 customer-view">
-            <div class="orders-style">
+            
               
 
               <h4 for="enter-new-name">Calculate the total amount <span class="current-customer-name"></span> spent on roomservice by date</h4>
@@ -76,32 +77,65 @@
               <p class="orders-content customer-orders-by-date"></p>
 
               
-            </div>
+            
           </section>
         <section class="orders section 2 customer-view">
-            <div class="orders-style">
-              <h4 class="orders-title">Calculate the total amount <span class="current-customer-name"></span> spent on roomservice in their lifetime</h4>
-              <p class="orders-content customer-total-orders"></p>
-            </div>
+          
+            <h4 class="orders-title">Calculate the total amount <span class="current-customer-name"></span> spent on roomservice in their lifetime</h4>
+            <p class="orders-content customer-total-orders"></p>
+            
           </section>
           <section class="orders section 3 customer-view">
-              <div class="orders-style">
-                <h4 class="orders-title">Breakdown of services for <span class="current-customer-name"></span></h4>
-                <div class="orders-content orders-breakdown">
-                  
-                </div>
-              </div>
-            </section>
+            
+            <h4 class="orders-title">Breakdown of services for <span class="current-customer-name"></span></h4>
+            <div class="orders-content orders-breakdown">
+              
+            </div>
+            
+          </section>
 
       </div>
 
       <div id="rooms" class="tab-content">
         <section class="rooms section 1 default">
-          <div class="rooms-style">
-            <h4 class="rooms-title">Most Popular date for booking:</h4>
-            <p class="rooms-content most-pop-booking"></p>
-          </div>
+          <h4 class="rooms-title">Most Popular date for booking:</h4>
+          <p class="rooms-content most-pop-booking"></p>
         </section>
+
+        <section class="rooms section 2 default">
+            <h4 for="enter-new-name">Find all bookings by Date<h4>
+            <form>
+              <input type="text" id="bookings-by-date">
+              <button type="button" id="bookings-by-date-button">Submit</button>
+            </form>
+            <div class="rooms-content bookings-by-date-display">
+
+            </div>
+        </section>
+
+
+
+          <section class="rooms section 1 customer-view">
+            <h4 class="rooms-title">Breakdown of bookings for <span class="current-customer-name"></span></h4>
+            <div class="rooms-content past-bookings">
+
+            </div>
+          </section>
+  
+          <!-- <section class="rooms section 2 customer-view">
+              <h4 for="enter-new-name">Find all bookings by Date<h4>
+              <form>
+                <input type="text" id="bookings-by-date">
+                <button type="button" id="bookings-by-date-button">Submit</button>
+              </form>
+              <div class="rooms-content bookings-by-date-display">
+  
+              </div>
+          </section> -->
+
+
+
+
       </div>
     
     </div>

@@ -6,8 +6,10 @@ const domUpdates = {
   
   populateAllTabs(admin) {
     $('#todays-date').text(admin.today).hide().fadeIn(1000);
+    // $('.header-style').append("<img src='../assets/front_desk.png'/>").hide().fadeIn(1000);
+    $('#hotel-name').append('Welcome back').hide().fadeIn(1000);
     $('.total-rooms').text(admin.hotelBenchmarks.generateAvailableRoomNumbersByDate(admin.today).length).hide().fadeIn(1000);
-    $('.total-earned').text(admin.hotelBenchmarks.calculateAllDebtsToday(admin.today)).hide().fadeIn(1000);
+    $('.total-earned').text('$' + admin.hotelBenchmarks.calculateAllDebtsToday(admin.today)).hide().fadeIn(1000);
     $('.percent-occupied').text(admin.hotelBenchmarks.showPercentageOfRoomsOccupiedByDate(admin.today) + '%').hide().fadeIn(1000);
     $('.total-orders').text(admin.hotelBenchmarks.servicesBenchmarks.generateAllOrdersForDate(admin.today).length).hide().fadeIn(1000);
     $('.most-pop-booking').text(admin.hotelBenchmarks.bookingBenchmarks.generateMostPopularBookingDate()).hide().fadeIn(1000);
@@ -19,7 +21,7 @@ const domUpdates = {
       $('#returned-name').text('Click here for ' + currentCustomer.name + '.').hide().fadeIn(1000);
       $('form').trigger('reset');
     } else {
-      $('#returned-name').text('Holy fuck! That person doesn\'t exsist in our system... but after verifying, they DO exsist in the local federal penitentiary database! CALL 911! ... Or, just add them to our system on the right.').hide().fadeIn(1000);
+      $('#returned-name').text('That person doesn\'t exsist in our system...').hide().fadeIn(1000);
       $('form').trigger('reset');
     }
   },
@@ -29,6 +31,7 @@ const domUpdates = {
     $('.customer-total-orders').text('$' + admin.currentCustomer.calculateLifetimeRoomServiceCost());
     // $('.orders-breakdown').text(admin.currentCustomer.generateAllRoomServicesForCustomer());
     $('.orders-breakdown').append(domUpdates.displayCustomerOrders(admin));
+    $('.past-bookings').append(domUpdates.displayCustomerBookingHistory(admin));
   },
 
   displayCustomerOrders(admin) {
@@ -40,7 +43,7 @@ const domUpdates = {
       return `<table class = "orders-by-date-table"> 
           <tr>
             <th>Sammy Ordered</th> 
-            <th>Total Cost</th>
+            <th>Cost</th>
           </tr>
           <tr>
             ${domUpdates.customerOrders(admin)}
@@ -64,6 +67,39 @@ const domUpdates = {
     $('form').trigger('reset');
   },
 
+  findBookingsByDate(admin, date) {
+    $('.bookings-by-date-display').append(domUpdates.displayBookingsByDate(admin, date));
+    $('form').trigger('reset');
+  },
+
+  displayBookingsByDate(admin, date) {
+    $('.bookings-by-date-display').text('');
+    let currentBookings = admin.hotelBenchmarks.bookingsByDate(date);
+    if (currentBookings.length ===  0) {
+      return `There are no bookings for that date.`
+    } else {
+      return `<table class = "bookings-by-date-table"> 
+          <tr>
+            <th>Date</th> 
+            <th>Room Number</th>
+          </tr>
+          <tr>
+            ${domUpdates.createBookingByDate(admin, date)}
+          </tr>
+        </table>`
+    }
+  },
+
+  createBookingByDate(admin, date) {
+    let sortedData = admin.hotelBenchmarks.bookingsByDate(date).map((booking) => {
+      return `<tr>
+          <td>${booking.date}</td> 
+          <td>${'#' + booking.roomNumber}</td>
+        </tr>`
+    });
+    return sortedData.join(' ');
+  },
+
   focusSearchedCustomer(admin) {
     $('#current-customer-info').text('We\'re currently focusing on ' + currentCustomer.name + ', customer ID: ' + currentCustomer.id).hide().fadeIn(1000);
     domUpdates.showDefaultCustomerInformation(admin);
@@ -78,6 +114,34 @@ const domUpdates = {
     $('form').trigger('reset');
     $('#returned-name').text('');
     domUpdates.showDefaultCustomerInformation(admin);
+  },
+
+  displayCustomerBookingHistory(admin) {
+    $('.past-bookings').text('');
+    let bookingsHistory = admin.currentCustomer.returnAlltimeCustomerBookings();
+    if (bookingsHistory.length ===  0) {
+      return `This customer has no bookings.`
+    } else {
+      return `<table class = "bookings-for-customer"> 
+          <tr>
+            <th>Date</th> 
+            <th>Room Number</th>
+          </tr>
+          <tr>
+            ${domUpdates.createBookingHistory(admin)}
+          </tr>
+        </table>`
+    }
+  },
+
+  createBookingHistory(admin) {
+    let sortedData = admin.currentCustomer.returnAlltimeCustomerBookings().map((booking) => {
+      return `<tr>
+          <td>${booking.date}</td> 
+          <td>${'#' + booking.roomNumber}</td>
+        </tr>`
+    });
+    return sortedData.join(' ');
   },
 
   changeContent() {
