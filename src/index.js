@@ -78,4 +78,15 @@ $(document).ready(function() {
     domUpdates.showServicesByDate(admin, date);
   });
 
+  $('#bookings-by-date-button').click(function() {
+    let date = $('#bookings-by-date').val();
+    domUpdates.findBookingsByDate(admin, date);
+  });
+
+  $('.make-a-booking').click(function() {
+    let roomNumber = event.target.id;
+    // console.log('clicked ' + room);
+    domUpdates.bookARoomOnClick(admin, roomNumber);
+  });
+
 });

@@ -1,6 +1,5 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
-// import DomUpdates from './DomUpdates';
 
 class Admin {
   constructor (combinedData) {
