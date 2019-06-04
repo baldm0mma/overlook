@@ -146,7 +146,7 @@ const domUpdates = {
 
   displayAllAvailableRoomsToday(admin) {
     $('.make-a-booking').text('');
-    return `<table class = "bookings-for-customer"> 
+    return `<table class = "all-available-bookings"> 
           <tr>
             <th>Room Number</th> 
             <th>Room Type</th>
@@ -180,14 +180,58 @@ const domUpdates = {
   bookARoomOnClick(admin, roomNumber) {
     admin.bookARoom(admin.today, roomNumber);
     $('.make-a-booking').text('');
-    domUpdates.displayAllAvailableRoomsToday(admin);
-    domUpdates.showDefaultCustomerInformation(admin);
-    console.log(admin.bookings);
+    $('.make-a-booking').append(domUpdates.displayAllAvailableRoomsToday(admin));
+    $('.past-bookings').append(domUpdates.displayCustomerBookingHistory(admin));
   },
 
-  changeContent() {
+  changeContentFromGeneralToCustomer() {
     $('.default').hide();
     $('.customer-view').show();
+  },
+
+  initiateSearchContent() {
+    $('.rooms.section.2.customer-view').hide();
+    $('.search-view').fadeIn(1000);
+  },
+
+  displaySearchedRoomsToday(admin, type, date) {
+    $('.make-a-booking').text('');
+    return `<table class = "all-available-bookings"> 
+          <tr>
+            <th>Room Number</th> 
+            <th>Room Type</th>
+            <th>Bidet?</th>
+            <th>Bed Size</th>
+            <th>Number of Beds</th>
+            <th>Cost</th>
+            <th>Book Room?</th>
+          </tr>
+          <tr>
+            ${domUpdates.createSearchedRoom(admin, type, date)}
+          </tr>
+        </table>`
+  },
+
+  createSearchedRoom(admin, type, date) {
+    let sortedData = admin.hotelBenchmarks.generateRoomByType(type, date).map((room) => {
+      return `<tr>
+          <td>${room.number}</td>
+          <td>${room.roomType}</td>
+          <td>${room.bidet ? 'Hell yeah!' : 'Sorry, poop like an animal'}</td>
+          <td>${room.bedSize}</td>
+          <td>${room.numBeds}</td>
+          <td>${'$' + room.costPerNight}</td>
+          <td><button type="button" id="${room.number}">Book</button></td>
+        </tr>`
+    });
+    return sortedData.join(' ');
+  },
+
+  searchByType(admin, type, date) {
+    $('.search-view').hide();
+    $('.make-a-booking').text('');
+    $('.make-a-booking').append(domUpdates.displaySearchedRoomsToday(admin, type, date));
+    $('.rooms.section.2.customer-view').fadeIn(1000);
   }
 
 };

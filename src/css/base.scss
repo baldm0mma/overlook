@@ -6,30 +6,32 @@ $quinary-color: #eed59a;
 $senary-color: #69d2e7;
 
 * {
-  // border: solid 1px red;
   color: #333;
   font-family: 'Cinzel', serif;
 }
 
 body {
-  margin-top: 20px;
-  font-family: 'Trebuchet MS', serif;
-  line-height: 1.6;
   background-image: url('../../assets/background.jpg');
   background-size: 135vw;
+  font-family: 'Trebuchet MS', serif;
+  line-height: 1.6;
+  margin-top: 20px;
 }
 
 header {
-  height: 175px;
   display: flex;
   flex-direction: column;
+  height: 175px;
   justify-content: space-between;
   margin: 0;
+    #current-customer-info {
+      color: #17abbb;
+    }
 }
 
 #todays-date {
-  margin-right: 50px;
   font-size: 30px;
+  margin-right: 50px;
 }
 
 .header-style {
@@ -48,28 +50,32 @@ h3 {
   font-size: 25px;
 }
 
-h4{
+h4 {
   font-size: 20px;
 }
 
+.rooms-title-current {
+  margin-bottom: 0;
+}
+
 .container {
-  width: 80%;
   margin: 0 auto;
+  width: 80%;
 }
 
 ul.tabs {
+  list-style: none;
   margin: 0px;
   padding: 0px;
-  list-style: none;
 }
 
 ul.tabs li {
   background: none;
+  border-radius: 10px 10px 0 0;
   color: white;
+  cursor: pointer;
   display: inline-block;
   padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 10px 10px 0 0;
 }
 
 ul.tabs li.current {
@@ -78,34 +84,41 @@ ul.tabs li.current {
 }
 
 .tab-content {
-  display: none;
   background: #ededed;
-  padding: 15px;
   border-radius: 0 0 10px 10px;
+  display: none;
+  padding: 15px;
 }
 
 .tab-content.current {
   display: flex;
   height: 400px;
   justify-content: center;
-  // text-shadow:white 1px 0 10px;
 }
 
 .main.section, .rooms.section {
+  align-items: center;
+  background-color: #e5e5e5;
+  border-radius: 8px;
+  border: solid 2px #cce5e8;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  // padding: 0px 15px;
   margin: 15px;
-  border-radius: 8px;
-  background-color: #e5e5e5;
-  border: solid 2px #cce5e8;
-  overflow-y: scroll;
+  text-align: center;
     p {
       font-size: 25px;
       margin: 10px 0;
     }
+}
+
+#all-rooms-view, #search-rooms-type-view {
+  overflow-y: scroll;
+  width: 120%;
+}
+
+#room-search {
+  color: #17abbb;
+  font-size: 12px;
 }
 
 .orders.content p {
@@ -114,16 +127,16 @@ ul.tabs li.current {
 }
 
 .customer.section, .orders.section {
+  align-items: center;
+  background-color: #e5e5e5;
+  border-radius: 8px;
+  border: solid 2px #cce5e8;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0px 15px;
   margin: 15px;
+  padding: 0px 15px;
+  text-align: center;
   width: 50%;
-  background-color: #e5e5e5;
-  border: solid 2px #cce5e8;
-  border-radius: 8px;
     p {
       font-size: 25px;
       margin: 10px 0;
@@ -131,8 +144,8 @@ ul.tabs li.current {
 }
 
 .orders.section {
-  width: 25%;
   font-size: 50px;
+  width: 25%;
 }
 
 .orders-breakdown {
@@ -156,4 +169,22 @@ th, td {
 
 th {
   font-size: 14px;
+}
+
+@media only screen and (max-width: 700px) {
+  .tab-content.current {
+    align-items: center;
+    flex-direction: column;
+    height: 700px;
+    justify-content: center;
+    overflow-y: scroll;
+  }
+
+  .orders.section, .main.section, .rooms.section, .customer.section {
+    width: 80%;
+  }
+  
+  .all-available-bookings {
+    width: 40%;
+  }
 }

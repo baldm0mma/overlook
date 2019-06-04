@@ -1,6 +1,6 @@
 class Bookings {
-  constructor(data) {
-    this.bookings = data.bookings;
+  constructor(bookings) {
+    this.bookings = bookings;
   }
 
   generateMostPopularBookingDate() {

@@ -12,8 +12,7 @@ class Admin {
     this.hotelBenchmarks = this.initiateHotelBenchmarks();
     this.currentCustomer;
     this.currentCustomerBooking;
-    this.currentCustomerService; 
-    // console.log('users', this.users);
+    this.currentCustomerService;
   }
 
   generateDateToday() {
@@ -31,7 +30,7 @@ class Admin {
   }
 
   initiateHotelBenchmarks() {
-    return new Hotel(this.allData, this.today);
+    return new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
   }
 
   searchForSpecificUser(searchTerm) {
@@ -39,11 +38,11 @@ class Admin {
     parseInt(searchTerm) ? strNum = parseInt(searchTerm) : strNum = searchTerm;
     if (typeof strNum === 'string') {
       let string = this.users.find(cust => cust.name.toLowerCase().includes(strNum.toLowerCase()));
-      string ? this.currentCustomer = new Customer(string.name, string.id, this.allData) : null;
+      string ? this.currentCustomer = new Customer(string.name, string.id, this.users, this.rooms, this.bookings, this.roomServices) : null;
       return string ? string : null;
     } else if (typeof strNum === 'number') {
       let number = this.users.find(cust => cust.id === strNum);
-      this.currentCustomer = new Customer(number.name, number.id, this.allData);
+      this.currentCustomer = new Customer(number.name, number.id, this.users, this.rooms, this.bookings, this.roomServices);
       return number ? number : null;
     } else {
       return null;
@@ -51,10 +50,10 @@ class Admin {
   }
 
   createNewCustomer(name) {
-    let newbieCustomer = new Customer(name, null, this.allData);
+    let newbieCustomer = new Customer(name, null, this.users, this.rooms, this.bookings, this.roomServices);
     this.users.push(newbieCustomer);
     this.currentCustomer = newbieCustomer;
-    this.hotel = new Hotel(this.allData);
+    this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
     return newbieCustomer;
   }
 
@@ -66,7 +65,7 @@ class Admin {
     };
     this.currentCustomerBooking = newBooking;
     this.bookings.push(newBooking);
-    this.hotel = new Hotel(this.allData);
+    this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
   }
 
   cancelBooking(date) {
@@ -77,7 +76,7 @@ class Admin {
     });
     this.bookings.splice(index, 1);
     this.currentCustomerBooking = null;
-    this.hotel = new Hotel(this.allData);
+    this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
   }
 
   purchaseRoomService(food, cost) {
@@ -89,11 +88,11 @@ class Admin {
     }
     this.currentCustomerService = newRoomService;
     this.roomServices.push(newRoomService);
-    this.hotel = new Hotel(this.allData);
+    this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
   }
 
   upgradeRoom() {
-    this.hotel = new Hotel(this.allData);
+    this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
   }
 
 }

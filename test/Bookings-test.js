@@ -3,14 +3,14 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import Bookings from '../src/Bookings';
-import { users, rooms, bookings, roomServices } from '../src/testData/TestData';
+import testBookings from '../src/testData/bookings-data';
 
 describe('Bookings', function() {
 
   let booking;
 
   beforeEach(function() {
-    booking = new Bookings({ users, rooms, bookings, roomServices }.bookings);
+    booking = new Bookings(testBookings);
 
   });
 
@@ -22,6 +22,8 @@ describe('Bookings', function() {
     expect(booking).to.be.an.instanceof(Bookings);
   });
 
-  it('should have a method that ')
+  it('should have a method that generates the most popular booking date', function() {
+    expect(booking.generateMostPopularBookingDate()).to.equal('21/08/2019');
+  });
 
 });

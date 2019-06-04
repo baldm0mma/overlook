@@ -3,14 +3,14 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import Services from '../src/Services';
-import { users, rooms, bookings, roomServices } from '../src/testData/TestData';
+import testRoomServices from '../src/testData/roomServices-data';
 
 describe('Services', function() {
 
   let services;
 
   beforeEach(function() {
-    services = new Services({ users, rooms, bookings, roomServices }.roomServices);
+    services = new Services(testRoomServices);
 
   });
 

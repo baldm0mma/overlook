@@ -5,9 +5,7 @@ chai.use(spies);
 import Admin from '../src/Admin';
 import Hotel from '../src/Hotel';
 import Customer from '../src/Customer';
-import { users, rooms, bookings, roomServices } from '../src/testData/TestData';
-// import domUpdates from "../src/domUpdates";
-chai.spy.on(Admin, 'fetchData', () => true);
+import { users, rooms, bookings, roomServices } from '../src/testData/admin-data';
 
 describe('Admin', function() {
 
