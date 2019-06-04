@@ -29,9 +29,9 @@ const domUpdates = {
   showDefaultCustomerInformation(admin) {
     $('.current-customer-name').text(currentCustomer.name);
     $('.customer-total-orders').text('$' + admin.currentCustomer.calculateLifetimeRoomServiceCost());
-    // $('.orders-breakdown').text(admin.currentCustomer.generateAllRoomServicesForCustomer());
     $('.orders-breakdown').append(domUpdates.displayCustomerOrders(admin));
     $('.past-bookings').append(domUpdates.displayCustomerBookingHistory(admin));
+    $('.make-a-booking').append(domUpdates.displayAllAvailableRoomsToday(admin));
   },
 
   displayCustomerOrders(admin) {
@@ -110,7 +110,7 @@ const domUpdates = {
   focusNewCustomer(admin) {
     let name = $('#enter-new-name').val();
     currentCustomer = admin.createNewCustomer(name);
-    $('#current-customer-info').text('We\'re currently focusing on ' + currentCustomer.name + ', customer ID: ' + currentCustomer.id).hide().fadeIn(1000); //fadein not working...
+    $('#current-customer-info').text('We\'re currently focusing on ' + currentCustomer.name + ', customer ID: ' + currentCustomer.id).hide().fadeIn(1000);
     $('form').trigger('reset');
     $('#returned-name').text('');
     domUpdates.showDefaultCustomerInformation(admin);
@@ -142,6 +142,47 @@ const domUpdates = {
         </tr>`
     });
     return sortedData.join(' ');
+  },
+
+  displayAllAvailableRoomsToday(admin) {
+    $('.make-a-booking').text('');
+    return `<table class = "bookings-for-customer"> 
+          <tr>
+            <th>Room Number</th> 
+            <th>Room Type</th>
+            <th>Bidet?</th>
+            <th>Bed Size</th>
+            <th>Number of Beds</th>
+            <th>Cost</th>
+            <th>Book Room?</th>
+          </tr>
+          <tr>
+            ${domUpdates.createAvailableRoom(admin)}
+          </tr>
+        </table>`
+  },
+
+  createAvailableRoom(admin) {
+    let sortedData = admin.hotelBenchmarks.generateFullRoomInformation('available', admin.today).map((room) => {
+      return `<tr>
+          <td>${room.number}</td>
+          <td>${room.roomType}</td>
+          <td>${room.bidet ? 'Hell yeah!' : 'Sorry, poop like an animal'}</td>
+          <td>${room.bedSize}</td>
+          <td>${room.numBeds}</td>
+          <td>${'$' + room.costPerNight}</td>
+          <td><button type="button" id="${room.number}">Book</button></td>
+        </tr>`
+    });
+    return sortedData.join(' ');
+  },
+
+  bookARoomOnClick(admin, roomNumber) {
+    admin.bookARoom(admin.today, roomNumber);
+    $('.make-a-booking').text('');
+    domUpdates.displayAllAvailableRoomsToday(admin);
+    domUpdates.showDefaultCustomerInformation(admin);
+    console.log(admin.bookings);
   },
 
   changeContent() {

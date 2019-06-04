@@ -44,12 +44,16 @@ h1, h3 {
   text-shadow: black 1px 0 10px;
 }
 
+h3 {
+  font-size: 25px;
+}
+
 h4{
   font-size: 20px;
 }
 
 .container {
-  width: 800px;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -95,17 +99,13 @@ ul.tabs li.current {
   // padding: 0px 15px;
   margin: 15px;
   border-radius: 8px;
-  width: 33.3%;
   background-color: #e5e5e5;
   border: solid 2px #cce5e8;
+  overflow-y: scroll;
     p {
       font-size: 25px;
       margin: 10px 0;
     }
-}
-
-.main.section {
-  // padding: 0px 25px;
 }
 
 .orders.content p {
@@ -151,6 +151,7 @@ form {
 
 th, td {
   font-size: 12px;
+  padding: 5px;
 }
 
 th {
