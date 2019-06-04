@@ -22,6 +22,8 @@ describe('Bookings', function() {
     expect(booking).to.be.an.instanceof(Bookings);
   });
 
-  it('should have a method that ')
+  it('should have a method that generates the most popular booking date', function() {
+    expect(booking.generateMostPopularBookingDate()).to.equal('21/08/2019');
+  });
 
 });

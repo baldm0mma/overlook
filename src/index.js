@@ -89,6 +89,7 @@ $(document).ready(function() {
     if (typeof parseInt(roomNumber) === 'number') {
       domUpdates.bookARoomOnClick(admin, roomNumber);
     }
+    
   });
 
   $('#room-search').click(function() {
@@ -97,7 +98,7 @@ $(document).ready(function() {
 
   $('#room-type-button').click(function() {
     let type = $('input:checked').val();
-    domUpdates.searchByType(type);
+    domUpdates.searchByType(admin, type, admin.today);
   });
 
 });
