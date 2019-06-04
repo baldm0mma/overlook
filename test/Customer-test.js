@@ -3,18 +3,17 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import Customer from '../src/Customer';
-import { users, rooms, bookings, roomServices } from '../src/testData/TestData';
-// import  from '../src/testData/TestData';
-// import domUpdates from "../src/domUpdates";
-// chai.spy.on(domUpdates, 'updateScore', () => true);
-// chai.spy.on(domUpdates, 'turnPrompt', () => true);
+import testUsers from '../src/testData/users-data';
+import testRooms from '../src/testData/rooms-data';
+import testBookings from '../src/testData/bookings-data';
+import testRoomServices from '../src/testData/roomServices-data';
 
 describe('Customer', function() {
 
   let customer;
 
   beforeEach(function() {
-    customer = new Customer('Autumn Toy', 1, { users, rooms, bookings, roomServices });
+    customer = new Customer('Autumn Toy', 1, testUsers, testRooms, testBookings, testRoomServices);
 
   });
 
@@ -32,10 +31,6 @@ describe('Customer', function() {
 
   it('should have a property that stores a user\'s ID', function() {
     expect(customer.id).to.equal(1);
-  });
-
-  it('should have a property that houses all data as a singular object', function() {
-    expect(customer.allData).to.be.an('object');
   });
 
   it('should have a method that returns lifetime customer bookings, both past and future', function() {
@@ -67,7 +62,6 @@ describe('Customer', function() {
   });
 
   it('should have a method that calculates', function() {
-    console.log(customer.generateAllRoomServicesForCustomer());
     expect(customer.generateAllRoomServicesForCustomer().length).to.equal(2);
   })
 

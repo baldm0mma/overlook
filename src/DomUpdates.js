@@ -146,7 +146,7 @@ const domUpdates = {
 
   displayAllAvailableRoomsToday(admin) {
     $('.make-a-booking').text('');
-    return `<table class = "bookings-for-customer"> 
+    return `<table class = "all-available-bookings"> 
           <tr>
             <th>Room Number</th> 
             <th>Room Type</th>
@@ -180,14 +180,28 @@ const domUpdates = {
   bookARoomOnClick(admin, roomNumber) {
     admin.bookARoom(admin.today, roomNumber);
     $('.make-a-booking').text('');
-    domUpdates.displayAllAvailableRoomsToday(admin);
-    domUpdates.showDefaultCustomerInformation(admin);
-    console.log(admin.bookings);
+    $('.make-a-booking').append(domUpdates.displayAllAvailableRoomsToday(admin));
+    $('.past-bookings').append(domUpdates.displayCustomerBookingHistory(admin));
+    // domUpdates.showDefaultCustomerInformation(admin);
+    console.log(admin.hotelBenchmarks.bookings);
   },
 
-  changeContent() {
+  changeContentFromGeneralToCustomer() {
     $('.default').hide();
     $('.customer-view').show();
+  },
+
+  initiateSearchContent() {
+    $('.rooms.section.2.customer-view').hide();
+    $('.search-view').fadeIn(1000);
+  },
+
+  searchByType() {
+    $('.search-view').hide();
+    $('.make-a-booking').text('');
+    $('.make-a-booking').append(domUpdates.displayAllAvailableRoomsToday(admin));
+    $('.rooms.section.2.customer-view').fadeIn(1000);
+
   }
 
 };

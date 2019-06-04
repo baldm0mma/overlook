@@ -1,10 +1,9 @@
 class Customer {
-  constructor(name, id, data) {
-    this.allData = data;
-    this.users = this.allData.users.users;
-    this.rooms = this.allData.rooms.rooms;
-    this.bookings = this.allData.bookings.bookings;
-    this.roomServices = this.allData.roomServices.roomServices;
+  constructor(name, id, users, rooms, bookings, roomServices) {
+    this.users = users;
+    this.rooms = rooms;
+    this.bookings = bookings;
+    this.roomServices = roomServices;
     this.name = name;
     this.id = id || this.users.length + 1;
   }

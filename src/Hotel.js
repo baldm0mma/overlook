@@ -2,24 +2,22 @@ import Services from "./Services";
 import Bookings from "./Bookings";
 
 class Hotel {
-  constructor(data, today) {
-    this.allData = data;
-    this.users = data.users.users;
-    this.rooms = data.rooms.rooms;
-    this.bookings = data.bookings.bookings;
-    this.roomServices = data.roomServices.roomServices;
+  constructor(users, rooms, bookings, roomServices, today) {
+    this.users = users;
+    this.rooms = rooms;
+    this.bookings = bookings;
+    this.roomServices = roomServices;
     this.today = today;
     this.servicesBenchmarks = this.initiateRoomServiceBenchmarks();
     this.bookingBenchmarks = this.initiateBookingBenchmarks();
-    // console.log(this.allData.bookings.bookings);
   }
 
   initiateRoomServiceBenchmarks() {
-    return new Services(this.allData.roomServices);
+    return new Services(this.roomServices);
   }
 
   initiateBookingBenchmarks() {
-    return new Bookings(this.allData.bookings);
+    return new Bookings(this.bookings);
   }
 
   bookingsByDate(date) {
@@ -49,9 +47,20 @@ class Hotel {
     }, []);
   }
 
+  generateRoomByType(type, date) {
+    return this.generateAvailableRoomNumbersByDate(date).reduce((roomTypeSearch, num) => {
+      this.rooms.forEach(room => {
+        if (room.number === num && room.roomType === type) {
+          roomTypeSearch.push(room);
+        }
+      })
+      return roomTypeSearch;
+    }, []);
+  }
+
   generateFullRoomInformation(roomListType, date) {
     let roomList;
-    if (roomListType === "available") {
+    if (roomListType === 'available') {
       roomList = this.generateAvailableRoomNumbersByDate(date);
     } else {
       roomList = this.generateBookedRoomNumbersByDate(date);

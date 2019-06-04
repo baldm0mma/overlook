@@ -115,19 +115,68 @@
 
 
 
-          <section class="rooms section 1 customer-view">
-            <h4 class="rooms-title">Breakdown of bookings for <span class="current-customer-name"></span></h4>
-            <div class="rooms-content past-bookings">
+        <section class="rooms section 1 customer-view">
+          <h4 class="rooms-title">Breakdown of bookings for <span class="current-customer-name"></span></h4>
+          <div class="rooms-content past-bookings">
 
+          </div>
+        </section>
+
+        <section class="rooms section 2 customer-view" id="all-rooms-view">
+          <h4 class="rooms-title-current">Current rooms available for booking</h4>
+          <p id="room-search" class="small-p">Can't find what you're looking for? Narrow your search.</p>
+          <div class="rooms-content make-a-booking">
+
+          </div>
+        </section>
+
+
+        <section class="rooms section 3 search-view" id="search-rooms-type-view">
+            <h4 class="rooms-title-current">Search for rooms below</h4>
+            <h5 class="small-p">Select a room type</h5>
+            <div>
+              <input type="radio" id="single-room" name="room-type" value="single room" checked>
+              <label for="single-room">Single Room</label>
             </div>
+            <div>
+              <input type="radio" id="junior-suite" name="room-type" value="junior-suite">
+              <label for="junior-suite">Junior Suite</label>
+            </div>
+            <div>
+              <input type="radio" id="suite" name="room-type" value="suite">
+              <label for="suite">Suite</label>
+            </div>
+            <div>
+            <div>
+              <input type="radio" id="residential-suite" name="room-type" value="residential-suite">
+              <label for="residential-suite">Residential Suite</label>
+            </div>
+            <button type="button" id="room-type-button">Search</button>
           </section>
-  
-          <section class="rooms section 2 customer-view">
-              <h4 class="rooms-title">Current rooms available for booking</h4>
-              <div class="rooms-content make-a-booking">
-  
-              </div>
-            </section>
+
+
+          <!-- <section class="rooms section 4 search-view" id="search-rooms-bidet-view">
+            <h4 class="rooms-title-current">Search for rooms below</h4>
+            <h5 class="small-p">Select a room type</h5>
+            <div>
+              <input type="radio" id="single-room" name="room-type" value="single room" checked>
+              <label for="single-room">Single Room</label>
+            </div>
+            <div>
+              <input type="radio" id="junior-suite" name="room-type" value="junior-suite">
+              <label for="junior-suite">Junior Suite</label>
+            </div>
+            <div>
+              <input type="radio" id="suite" name="room-type" value="suite">
+              <label for="suite">Suite</label>
+            </div>
+            <div>
+            <div>
+              <input type="radio" id="residential-suite" name="room-type" value="residential-suite">
+              <label for="residential-suite">Residential Suite</label>
+            </div>
+            <button type="button" id="room-type-button">Next</button>
+          </section> -->
 
 
 

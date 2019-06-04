@@ -31,13 +31,14 @@ Promise.all([users, roomServices, bookings, rooms])
   })
   .catch(error => console.log(`Error in promises ${error}`));
 
-let admin;
+let admin; 
 
 // setTimeout(console.log(combinedData), 2000);
 
 $(document).ready(function() {
 
   $('.customer-view').hide();
+  $('.search-view').hide();
 
   setTimeout( () => {
     // console.log(combinedData);
@@ -64,13 +65,13 @@ $(document).ready(function() {
 
   $('#returned-name').click(function() {
     domUpdates.focusSearchedCustomer(admin);
-    domUpdates.changeContent();
+    domUpdates.changeContentFromGeneralToCustomer();
     // console.log(admin.currentCustomer);
   });
 
   $('#create-new-customer-button').click(function() {
     domUpdates.focusNewCustomer(admin);
-    domUpdates.changeContent();
+    domUpdates.changeContentFromGeneralToCustomer();
   });
 
   $('#roomservice-by-date-button').click(function() {
@@ -85,8 +86,18 @@ $(document).ready(function() {
 
   $('.make-a-booking').click(function() {
     let roomNumber = event.target.id;
-    // console.log('clicked ' + room);
-    domUpdates.bookARoomOnClick(admin, roomNumber);
+    if (typeof parseInt(roomNumber) === 'number') {
+      domUpdates.bookARoomOnClick(admin, roomNumber);
+    }
+  });
+
+  $('#room-search').click(function() {
+    domUpdates.initiateSearchContent();
+  });
+
+  $('#room-type-button').click(function() {
+    let type = $('input:checked').val();
+    domUpdates.searchByType(type);
   });
 
 });
