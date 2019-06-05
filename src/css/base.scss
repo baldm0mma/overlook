@@ -195,3 +195,15 @@ th {
     width: 40%;
   }
 }
+
+@media only screen and (max-width: 570px) {
+  .tab-content {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  body {
+    width: 510px;
+  }
+}
