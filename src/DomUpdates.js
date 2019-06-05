@@ -9,7 +9,7 @@ const domUpdates = {
     // $('.header-style').append("<img src='../assets/front_desk.png'/>").hide().fadeIn(1000);
     $('#hotel-name').append('Welcome back').hide().fadeIn(1000);
     $('.total-rooms').text(admin.hotelBenchmarks.generateAvailableRoomNumbersByDate(admin.today).length).hide().fadeIn(1000);
-    $('.total-earned').text('$' + admin.hotelBenchmarks.calculateAllDebtsToday(admin.today)).hide().fadeIn(1000);
+    $('.total-earned').text('$' + parseFloat(admin.hotelBenchmarks.calculateAllDebtsToday(admin.today)).toFixed(2)).hide().fadeIn(1000);
     $('.percent-occupied').text(admin.hotelBenchmarks.showPercentageOfRoomsOccupiedByDate(admin.today) + '%').hide().fadeIn(1000);
     $('.total-orders').text(admin.hotelBenchmarks.servicesBenchmarks.generateAllOrdersForDate(admin.today).length).hide().fadeIn(1000);
     $('.most-pop-booking').text(admin.hotelBenchmarks.bookingBenchmarks.generateMostPopularBookingDate()).hide().fadeIn(1000);
@@ -232,6 +232,14 @@ const domUpdates = {
     $('.make-a-booking').text('');
     $('.make-a-booking').append(domUpdates.displaySearchedRoomsToday(admin, type, date));
     $('.rooms.section.2.customer-view').fadeIn(1000);
+  },
+
+  chooseSammy(admin, sammy) {
+    admin.purchaseRoomService(sammy, 10);
+    domUpdates.populateAllTabs(admin);
+    domUpdates.showDefaultCustomerInformation(admin);
+    $('.services-view').hide();
+    $('#all-rooms-view').fadeIn(1000);
   }
 
 };
