@@ -1,6 +1,9 @@
 class Bookings {
-  constructor(bookings) {
+  constructor(bookings, id, today, roomNum) {
     this.bookings = bookings;
+    this.userID = id;
+    this.date = today;
+    this.roomNumber = roomNum;
   }
 
   generateMostPopularBookingDate() {

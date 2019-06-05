@@ -13,6 +13,7 @@
       </div>
       <h3 id="current-customer-info"> </h3>
     </header>
+    
     <div class="container">
 
       <ul class="tabs">
@@ -23,21 +24,26 @@
       </ul>
     
       <div id="main" class="tab-content current">
+
         <section class="main section 1">
           <h4 class="main-title">Total Rooms Available for today's date</h4>
           <p class="main-content total-rooms"></p>
         </section>
+
         <section class="main section 2">
           <h4 class="main-title">Total earned if all debt's are paid for today's date</h4>
           <p class="main-content total-earned"></p>
         </section>
+
         <section class="main section 3">
           <h4 class="main-title">Percentage of rooms occupied for today's date</h4>
           <p class="main-content percent-occupied"></p>
         </section>
+
       </div>
 
       <div id="customer" class="tab-content">
+
         <section class="customer section 1">
           <h4>You can search for an exsisting customer below</h4>
           <form>
@@ -47,6 +53,7 @@
             <p id="returned-name"></p>
           </form> 
         </section>
+
         <section class="customer section 2">
           <h4>Please enter a first and last name, and they will be entered into our database</h4>
           <form>
@@ -59,41 +66,29 @@
 
       <div id="orders" class="tab-content">
         <section class="orders section 1 default">
-          
             <h4 class="orders-title">Total Roomservice orders for today's date</h4>
             <p class="orders-content total-orders"></p>
-          
         </section>
 
         <section class="orders section 1 customer-view">
-            
-              
+          <h4 for="enter-new-name">Total amount <span class="current-customer-name"></span> spent on roomservice by date</h4>
+          <form>
+            <input type="text" id="roomservice-by-date">
+            <button type="button" id="roomservice-by-date-button">Submit</button>
+          </form>
+          <p class="orders-content customer-orders-by-date"></p>
+        </section>
 
-              <h4 for="enter-new-name">Total amount <span class="current-customer-name"></span> spent on roomservice by date</h4>
-              <form>
-                <input type="text" id="roomservice-by-date">
-                <button type="button" id="roomservice-by-date-button">Submit</button>
-              </form>
-              <p class="orders-content customer-orders-by-date"></p>
-
-              
-            
-          </section>
         <section class="orders section 2 customer-view">
-          
-            <h4 class="orders-title">Total amount <span class="current-customer-name"></span> has spent on roomservice in their lifetime</h4>
-            <p class="orders-content customer-total-orders"></p>
-            
-          </section>
-          <section class="orders section 3 customer-view">
-            
-            <h4 class="orders-title">Breakdown of services for <span class="current-customer-name"></span></h4>
-            <div class="orders-content orders-breakdown">
-              
-            </div>
-            
-          </section>
+          <h4 class="orders-title">Total amount <span class="current-customer-name"></span> has spent on roomservice in their lifetime</h4>
+          <p class="orders-content customer-total-orders"></p>
+        </section>
 
+        <section class="orders section 3 customer-view">
+          <h4 class="orders-title">Breakdown of services for <span class="current-customer-name"></span></h4>
+          <div class="orders-content orders-breakdown">
+          </div>
+        </section>
       </div>
 
       <div id="rooms" class="tab-content">
@@ -109,16 +104,12 @@
               <button type="button" id="bookings-by-date-button">Submit</button>
             </form>
             <div class="rooms-content bookings-by-date-display">
-
             </div>
         </section>
-
-
 
         <section class="rooms section 1 customer-view">
           <h4 class="rooms-title">Breakdown of bookings for <span class="current-customer-name"></span></h4>
           <div class="rooms-content past-bookings">
-
           </div>
         </section>
 
@@ -126,10 +117,8 @@
           <h4 class="rooms-title-current">Current rooms available for booking</h4>
           <p id="room-search" class="small-p">Can't find what you're looking for? Narrow your search.</p>
           <div class="rooms-content make-a-booking">
-
           </div>
         </section>
-
 
         <section class="rooms section 3 search-view" id="search-rooms-type-view">
             <h4 class="rooms-title-current">Search for rooms below</h4>
@@ -154,10 +143,8 @@
             <button type="button" id="room-type-button">Search</button>
           </section>
 
-
           <section class="rooms section 4 services-view" id="book-a-meal">
             <h4 class="meal-addon">Would also you like to order room service? On today's menu:</h4>
-
             <div>
               <input type="radio" id="Randome-ass metal sandwich" name="sammy" value="Randome-ass metal sandwich" checked>
               <label for="Randome-ass metal sandwich">Randome-ass metal sandwich</label>
@@ -178,11 +165,7 @@
             <button type="button" id="sammy-button">Next</button>
           </section>
 
-
-
-
-      </div>
-    
+      </div>    
     </div>
   </body>
 </html>
