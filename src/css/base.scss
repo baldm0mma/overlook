@@ -6,6 +6,7 @@ $quinary-color: #eed59a;
 $senary-color: #69d2e7;
 
 * {
+  // border: solid red 1px;
   color: #333;
   font-family: 'Cinzel', serif;
 }
@@ -52,6 +53,12 @@ h3 {
 
 h4 {
   font-size: 20px;
+  width: 80%;
+}
+
+input, button {
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .rooms-title-current {
@@ -106,7 +113,7 @@ ul.tabs li.current {
   margin: 15px;
   text-align: center;
     p {
-      font-size: 25px;
+      font-size: 20px;
       margin: 10px 0;
     }
 }
@@ -138,7 +145,7 @@ ul.tabs li.current {
   text-align: center;
   width: 50%;
     p {
-      font-size: 25px;
+      font-size: 20px;
       margin: 10px 0;
     }
 }

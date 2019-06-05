@@ -31,14 +31,13 @@ Promise.all([users, roomServices, bookings, rooms])
   })
   .catch(error => console.log(`Error in promises ${error}`));
 
-let admin; 
-
-// setTimeout(console.log(combinedData), 2000);
+let admin;
 
 $(document).ready(function() {
 
   $('.customer-view').hide();
   $('.search-view').hide();
+  $('.services-view').hide();
 
   setTimeout( () => {
     // console.log(combinedData);
@@ -89,7 +88,9 @@ $(document).ready(function() {
     if (typeof parseInt(roomNumber) === 'number') {
       domUpdates.bookARoomOnClick(admin, roomNumber);
     }
-    
+    $('#all-rooms-view').hide();
+    $('.search-view').hide();
+    $('.services-view').fadeIn(1000);
   });
 
   $('#room-search').click(function() {
@@ -99,6 +100,11 @@ $(document).ready(function() {
   $('#room-type-button').click(function() {
     let type = $('input:checked').val();
     domUpdates.searchByType(admin, type, admin.today);
+  });
+
+  $('#sammy-button').click(function() {
+    let sammy = $('#book-a-meal input:checked').val();
+    domUpdates.chooseSammy(admin, sammy);
   });
 
 });
