@@ -1,6 +1,10 @@
 class Services {
-  constructor(roomServices) {
+  constructor(roomServices, id, date, food, cost) {
     this.roomServices = roomServices;
+    this.userID = id;
+    this.date = date;
+    this.food = food;
+    this.totalCost = cost;
   }
 
   generateAllOrdersForDate(date) {

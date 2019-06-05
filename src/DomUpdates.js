@@ -6,7 +6,7 @@ const domUpdates = {
   
   populateAllTabs(admin) {
     $('#todays-date').text(admin.today).hide().fadeIn(1000);
-    // $('.header-style').append("<img src='../assets/front_desk.png'/>").hide().fadeIn(1000);
+    $('#hotel-name').text('');
     $('#hotel-name').append('Welcome back').hide().fadeIn(1000);
     $('.total-rooms').text(admin.hotelBenchmarks.generateAvailableRoomNumbersByDate(admin.today).length).hide().fadeIn(1000);
     $('.total-earned').text('$' + parseFloat(admin.hotelBenchmarks.calculateAllDebtsToday(admin.today)).toFixed(2)).hide().fadeIn(1000);

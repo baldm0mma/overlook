@@ -1,5 +1,7 @@
 import Customer from './Customer';
 import Hotel from './Hotel';
+import Bookings from './Bookings';
+import Services from './Services';
 
 class Admin {
   constructor (combinedData) {
@@ -58,11 +60,7 @@ class Admin {
   }
 
   bookARoom(date, roomNumber) {
-    const newBooking = {
-      userID: this.currentCustomer.id,
-      date,
-      roomNumber
-    };
+    const newBooking = new Bookings(this.bookings, this.currentCustomer.id, date, roomNumber);
     this.currentCustomerBooking = newBooking;
     this.bookings.push(newBooking);
     this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
@@ -80,12 +78,7 @@ class Admin {
   }
 
   purchaseRoomService(food, cost) {
-    let newRoomService = {
-      userID: this.currentCustomer.id,
-      date: this.today,
-      food,
-      totalCost: cost
-    }
+    let newRoomService = new Services(this.roomServices, this.currentCustomer.id, this.today, food, cost);
     this.currentCustomerService = newRoomService;
     this.roomServices.push(newRoomService);
     this.hotelBenchmarks = new Hotel(this.users, this.rooms, this.bookings, this.roomServices, this.today);
