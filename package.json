@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "cross-fetch": "^3.0.3",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   }
 }
